@@ -25,6 +25,8 @@ namespace intex2.Controllers
             return View();
         }
 
+
+        //loads all accidents, enables filtering etc
         public IActionResult Accidents()
         {
 
@@ -34,7 +36,7 @@ namespace intex2.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult About()
         {
             return View();
         }
