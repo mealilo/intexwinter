@@ -11,6 +11,7 @@
 
 //$(document).ready(function () {
 //    $('#mytable').DataTable({
+//        "retrieve": true,
 //        "scrollY": "450px",
 //        "scrollCollapse": true,
 //        "paging": true,
@@ -21,38 +22,42 @@
 
 //});
 
+
 $(document).ready(function () {
-    // Setup - add a text input to each footer cell
-    $('#mytable tfoot th').each(function () {
-        var title = $(this).text();
-        $(this).html('<input  type="text" placeholder="filter by ' + title.toLowerCase() + '" />');
-    });
+        // Setup - add a text input to each footer cell
+        $('#mytable tfoot th').each(function () {
+            var title = $(this).text();
+            $(this).html('<input  type="text" class="align-content-center" placeholder="filter by ' + title.toLowerCase() + '" />');
+        });
 
-    // DataTable
+        // DataTable
     var table = $('#mytable').DataTable({
+            "destroy": true,
         "scrollY": "450px",
-        "scrollCollapse": true,
-        "paging": true,
-        "scrollX": true,
-        
-        initComplete: function () {
-            // Apply the search
-            this.api().columns().every(function () {
-                var that = this;
+        "scrollX": "450px",
+            "scrollCollapse": true,
+            "paging": true,
+            
+            "scrollX": true,
 
-                $('input', this.footer()).on('keyup change clear', function () {
-                    if (that.search() !== this.value) {
-                        that
-                            .search(this.value)
-                            .draw();
-                    }
+            initComplete: function () {
+                // Apply the search
+                this.api().columns().every(function () {
+                    var that = this;
+
+                    $('input', this.footer()).on('keyup change clear', function () {
+                        if (that.search() !== this.value) {
+                            that
+                                .search(this.value)
+                                .draw();
+                        }
+                    });
                 });
-            });
-        }
+            }
+        });
+
+
     });
-
-});
-
 
 
 
