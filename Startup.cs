@@ -29,7 +29,7 @@ namespace intex2
 
             services.AddDbContext<AccidentContext>(options =>
             {
-                options.UseMySql(Configuration["ConnectionStrings:AppointmentDBConnection"]);
+                options.UseMySql(Configuration["ConnectionStrings:UdotDBConnection"]);
             });
 
             services.AddScoped<IAccidents, EFAccidents>();
