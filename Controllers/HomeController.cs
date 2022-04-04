@@ -11,11 +11,13 @@ namespace intex2.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        //creates repo for the DB
+        private IAccidents repo { get; set; }
+
+        public HomeController(IAccidents temp)
         {
-            _logger = logger;
+            repo = temp;
         }
 
         public IActionResult Index()
@@ -26,6 +28,7 @@ namespace intex2.Controllers
         public IActionResult Accidents()
         {
 
+            List<Accident> AllAccidents = repo.Accidents.ToList();
 
             return View();
         }
