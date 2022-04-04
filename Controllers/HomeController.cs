@@ -31,6 +31,7 @@ namespace intex2.Controllers
         {
 
             List<Accident> AllAccidents = repo.Accidents.ToList();
+            ViewBag.accidents = AllAccidents;
 
             return View();
         }
