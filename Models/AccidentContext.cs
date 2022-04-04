@@ -17,5 +17,8 @@ namespace intex2.Models
             : base(options)
         {
         }
+
+        public DbSet<Accident> Accidents { get; set; }
+
     }
 }
