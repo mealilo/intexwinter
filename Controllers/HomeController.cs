@@ -23,6 +23,13 @@ namespace intex2.Controllers
             return View();
         }
 
+        public IActionResult Accidents()
+        {
+
+
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
