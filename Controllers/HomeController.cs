@@ -25,6 +25,8 @@ namespace intex2.Controllers
 
         public IActionResult Accidents()
         {
+
+
             return View();
         }
 
