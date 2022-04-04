@@ -45,6 +45,12 @@ namespace intex2
                 .AddDefaultUI()
                 .AddEntityFrameworkStores<AppIdentityDBContext>();
 
+
+            services.AddAuthorization(options =>
+        options.AddPolicy("TwoFactorEnabled",
+        x => x.RequireClaim("amr", "mfa")));
+
+            //Repository
             services.AddScoped<IAccidents, EFAccidents>();
             services.AddRazorPages();
             //configure passwords!!

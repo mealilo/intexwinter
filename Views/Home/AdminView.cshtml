@@ -1,0 +1,139 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex justify-cntent-center align-items-center" style="height:10%;">
+    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+            <div class="carousel-container m-5">
+                <br />
+                <h2>Currently Viewing all Accidents</h2>
+                <p class="animate__animated animate__fadeInUp">
+                    View, Edit, Delete, and Create All Accidents
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <br />
+                <br />
+            </div>
+            <table id="mytable" class="table  table-hover table-responsive table-sm table-striped">
+                <thead>
+                    <tr class="text-center">
+                        <td>CRASH_ID</td>
+                        <td><a>Manipulate</a></td>
+                        <td>CRASH_DATETIME</td>
+                        <td>ROUTE</td>
+                        <td>MILEPOINT</td>
+                        <td>LATITUDE</td>
+                        <td>LONGITUDE</td>
+                        <td>MAIN_ROAD_NAME</td>
+                        <td>CITY</td>
+                        <td>COUNTY_NAME</td>
+                        <td>CRASH_SEVERITY_ID</td>
+                        <td>WORK_ZONE_RELATED</td>
+                        <td>PEDESTRIAN_INVOLVED</td>
+                        <td>BICYCLIST_INVOLVED</td>
+                        <td>MOTORCYCLE_INVOLVED</td>
+                        <td>IMPROPER_RESTRAINT</td>
+                        <td>UNRESTRAINED</td>
+                        <td>DUI</td>
+                        <td>INTERSECTION_RELATED</td>
+                        <td>WILD_ANIMAL_RELATED</td>
+                        <td>DOMESTIC_ANIMAL_RELATED</td>
+                        <td>OVERTURN_ROLLOVER</td>
+                        <td>COMMERCIAL_MOTOR_VEH_INVOLVED</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Accident a in ViewBag.accidents)
+                    {
+                    <tr class="text-center">
+                        <td>@a.CRASH_ID</td>
+                        <td class="text-center"><a class="btn btn-warning text-center">Edit</a>
+                                                <a class="btn btn-danger text-center">Delete</a></td>
+                        <td>@a.CRASH_DATETIME</td>
+                        <td>@a.ROUTE</td>
+                        <td>@a.MILEPOINT</td>
+                        <td>@a.LAT_UTM_Y</td>
+                        <td>@a.LONG_UTM_X</td>
+                        <td>@a.MAIN_ROAD_NAME</td>
+                        <td>@a.CITY</td>
+                        <td>@a.COUNTY_NAME</td>
+                        <td>@a.CRASH_SEVERITY_ID</td>
+                        <td>@a.WORK_ZONE_RELATED</td>
+                        <td>@a.PEDESTRIAN_INVOLVED</td>
+                        <td>@a.BICYCLIST_INVOLVED</td>
+                        <td>@a.MOTORCYCLE_INVOLVED</td>
+                        <td>@a.IMPROPER_RESTRAINT</td>
+                        <td>@a.UNRESTRAINED</td>
+                        <td>@a.DUI</td>
+                        <td>@a.INTERSECTION_RELATED</td>
+                        <td>@a.WILD_ANIMAL_RELATED</td>
+                        <td>@a.DOMESTIC_ANIMAL_RELATED</td>
+                        <td>@a.OVERTURN_ROLLOVER</td>
+                        <td>@a.COMMERCIAL_MOTOR_VEH_INVOLVED</td>
+
+                    </tr>
+                    }
+
+                </tbody>
+                <tfoot>
+                    <tr class="text-center">
+                        <th>CRASH ID</th>
+                        <th> </th>
+                        <th>CRASH DATETIME</th>
+                        <th>ROUTE</th>
+                        <th>MILEPOINT</th>
+                        <th>LATITUDE</th>
+                        <th>LONGITUDEX</th>
+                        <th>MAIN ROAD</th>
+                        <th>CITY</th>
+                        <th>COUNTY</th>
+                        <th>CRASH SEVERITY ID</th>
+                        <th>WORK ZONE RELATED</th>
+                        <th>PEDESTRIAN INVOLVED</th>
+                        <th>BICYCLIST INVOLVED</th>
+                        <th>MOTORCYCLE INVOLVED</th>
+                        <th>IMPROPER RESTRAINT</th>
+                        <th>UNRESTRAINED</th>
+                        <th>DUI</th>
+                        <th>INTERSECTION RELATED</th>
+                        <th>WILD_ANIMAL RELATED</th>
+                        <th>DOMESTIC ANIMAL RELATED</th>
+                        <th>OVERTURN ROLLOVER</th>
+                        <th>COMM VEHICLE INVOLVED</th>
+                    </tr>
+                </tfoot>
+
+
+            </table>
+
+
+        </div>
+    </section> <!-- End Services Section -->
+
+
+
+</main><!-- End #main -->
