@@ -9,7 +9,16 @@
 * License: https://bootstrapmade.com/license/
 */
 
+$(document).ready(function () {
+    $('#my_table').Database({
+        "scrollY": "450px",
+        "scrollCollapse": true,
+        "paging": true,
 
+    });
+
+
+});
 
 
 
