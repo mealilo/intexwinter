@@ -73,7 +73,8 @@
                 <ul>
                     <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Accidents">Accidents</a></li>
-                    <li><a class="nav-link scrollto" asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
+
                     <li><a href="blog.html">Blog</a></li>
                     <li class="dropdown">
                         <a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
@@ -96,6 +97,7 @@
                     </li>
                     <li><a class="cta d-none d-md-block" href="#contact">Log In</a></li>
                     <partial name="_LoginPartial" />
+
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -119,20 +121,20 @@
         @RenderSection("Scripts", required: false)
 
         @*<div class="footer-newsletter">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <h4>Our Newsletter</h4>
-                            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                        </div>
-                        <div class="col-lg-6">
-                            <form action="" method="post">
-                                <input type="email" name="email"><input type="submit" value="Subscribe">
-                            </form>
-                        </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h4>Our Newsletter</h4>
+                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <form action="" method="post">
+                            <input type="email" name="email"><input type="submit" value="Subscribe">
+                        </form>
                     </div>
                 </div>
-            </div>*@
+            </div>
+        </div>*@
 
         <div class="footer-top">
             <div class="container">
@@ -190,17 +192,6 @@
 
 
     </footer><!-- End Footer -->
-    <!-- Vendor JS Files -->
-    <script src="~/vendor/aos/aos.js"></script>
-
-    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="~/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="~/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="~/vendor/php-email-form/validate.js"></script>
-
-    <!-- Template Main JS File -->
-    <script src="~/js/site.js"></script>
 </body>
 
 
