@@ -1,5 +1,4 @@
 ﻿using intex2.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -27,7 +26,7 @@ namespace intex2.Controllers
         }
 
 
-        [Authorize]
+        //loads all accidents, enables filtering etc
         public IActionResult Accidents()
         {
 
@@ -37,36 +36,30 @@ namespace intex2.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult About()
         {
             return View();
         }
 
-        // Admin View
-        [Authorize]
-        public IActionResult AdminView()
-        {
-            List<Accident> AllAccidents = repo.Accidents.ToList();
-            ViewBag.accidents = AllAccidents;
-            return View();
-        }
-
-
-
-        // deletes the crash from the DB
-        [HttpGet]
-        public IActionResult Delete(int crashid)
-        {
-
-            Accident accident = repo.Accidents.Single(x => x.CRASH_ID == crashid);
-            //repo.Delete(bowler);
-
-            return RedirectToAction("Index");
-        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+        //Methods
+
+        //Delete
+        [HttpGet]
+        public IActionResult Delete(int crashid)
+        {
+
+            Accident accident = repo.Accidents.Single(x => x.CRASH_ID == crashid);
+            repo.Delete(accident);
+
+            return RedirectToAction("");
+        }
+
     }
 }
