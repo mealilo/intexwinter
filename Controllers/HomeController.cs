@@ -57,10 +57,11 @@ namespace intex2.Controllers
         }
         //Methods
         [HttpGet]
-        public IActionResult AddEditAccidents(int crashid)
+        public IActionResult AddEditAccident(int crashid)
         {
 
-            //ViewBag.Teams = repo.Teams.ToList();
+            ViewBag.Cities = repo.Accidents.Select(x => x.CITY).Distinct().ToList();
+            ViewBag.Counties = repo.Accidents.Select(x => x.COUNTY_NAME).Distinct().ToList();
             // if new bowler
             if (crashid == 0)
             {
@@ -76,7 +77,7 @@ namespace intex2.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddEditBowerls(Accident accident)
+        public IActionResult AddEditAccident(Accident accident)
         {
             if (ModelState.IsValid)
             {

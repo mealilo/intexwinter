@@ -76,7 +76,7 @@
                     <tr class="text-center">
                         <td>@a.CRASH_ID</td>
                         <td class="text-center">
-                            <a class="btn btn-warning text-center">Edit</a>
+                            <a asp-action="AddEditAccident" asp-route-crashid="@a.CRASH_ID" class="btn btn-warning text-center">Edit</a>
                             <form>
                                 <button type="submit"  onclick="ConfirmDelete(@a.CRASH_ID);"   class="btn btn-danger text-center">Delete</button>
                             </form>
