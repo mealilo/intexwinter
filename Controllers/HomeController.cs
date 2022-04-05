@@ -1,4 +1,5 @@
 ﻿using intex2.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -56,6 +57,7 @@ namespace intex2.Controllers
             return View();
         }
         //Methods
+        [Authorize]
         [HttpGet]
         public IActionResult AddEditAccident(int crashid)
         {
@@ -75,21 +77,24 @@ namespace intex2.Controllers
             }
 
         }
-
+        [Authorize]
         [HttpPost]
         public IActionResult AddEditAccident(Accident accident)
         {
-            if (ModelState.IsValid)
-            {
-                repo.DoAccident(accident);
+        
+            ViewBag.Cities = repo.Accidents.Select(x => x.CITY).Distinct().ToList();
+            ViewBag.Counties = repo.Accidents.Select(x => x.COUNTY_NAME).Distinct().ToList();
 
-                return RedirectToAction("Index");
-            }
 
-            return View(accident);
+            // if we are having issues with models and the db check here cause i removed the model check.
+            repo.DoAccident(accident);
+
+            return RedirectToAction("AdminView");
+            
         }
 
         //Delete
+        [Authorize]
         [HttpPost]
         public IActionResult Delete(int crashid)
         {
