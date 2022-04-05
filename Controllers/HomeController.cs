@@ -1,4 +1,5 @@
 ﻿using intex2.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -56,6 +57,7 @@ namespace intex2.Controllers
             return View();
         }
         //Methods
+        [Authorize]
         [HttpGet]
         public IActionResult AddEditAccident(int crashid)
         {
@@ -75,7 +77,7 @@ namespace intex2.Controllers
             }
 
         }
-
+        [Authorize]
         [HttpPost]
         public IActionResult AddEditAccident(Accident accident)
         {
@@ -83,13 +85,14 @@ namespace intex2.Controllers
             {
                 repo.DoAccident(accident);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("AdminView");
             }
 
             return View(accident);
         }
 
         //Delete
+        [Authorize]
         [HttpPost]
         public IActionResult Delete(int crashid)
         {

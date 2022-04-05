@@ -8,8 +8,6 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
-@*<script src="~/js/JavaScript.js"></script>*@
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex justify-cntent-center align-items-center" style="height:10%;">
     <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
@@ -75,10 +73,10 @@
                     {
                     <tr class="text-center">
                         <td>@a.CRASH_ID</td>
-                        <td class="text-center">
-                            <a asp-action="AddEditAccident" asp-route-crashid="@a.CRASH_ID" class="btn btn-warning text-center">Edit</a>
+                        <td class="d-flex justify-content-center ">
+                            <a asp-action="AddEditAccident" asp-route-crashid="@a.CRASH_ID" class="btn btn-warning text-center m-1">Edit</a>
                             <form>
-                                <button type="submit"  onclick="ConfirmDelete(@a.CRASH_ID);"   class="btn btn-danger text-center">Delete</button>
+                                <button type="submit"  onclick="ConfirmDelete(@a.CRASH_ID);"   class="btn btn-danger text-center m-1">Delete</button>
                             </form>
                         </td>
                                                 
