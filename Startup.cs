@@ -1,6 +1,7 @@
 using intex2.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -33,10 +34,20 @@ namespace intex2
             {
                 options.UseMySql(Configuration["ConnectionStrings:UdotDBConnection"]);
             });
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential 
+                // cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                // requires using Microsoft.AspNetCore.Http;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
 
+            services.AddRazorPages();
+        
 
-            // sets up identity stuff
-            services.AddDbContext<AppIdentityDBContext>(options =>
+        // sets up identity stuff
+        services.AddDbContext<AppIdentityDBContext>(options =>
             {
                 options.UseMySql(Configuration["ConnectionStrings:UdotDBConnection"]);
             });
@@ -111,7 +122,7 @@ namespace intex2
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();
 
