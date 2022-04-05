@@ -56,6 +56,37 @@ namespace intex2.Controllers
             return View();
         }
         //Methods
+        [HttpGet]
+        public IActionResult AddEditAccidents(int crashid)
+        {
+
+            //ViewBag.Teams = repo.Teams.ToList();
+            // if new bowler
+            if (crashid == 0)
+            {
+                return View();
+            }
+
+            else
+            {
+                Accident accident = repo.Accidents.Single(x => x.CRASH_ID == crashid);
+                return View(accident);
+            }
+
+        }
+
+        [HttpPost]
+        public IActionResult AddEditBowerls(Accident accident)
+        {
+            if (ModelState.IsValid)
+            {
+                repo.DoAccident(accident);
+
+                return RedirectToAction("Index");
+            }
+
+            return View(accident);
+        }
 
         //Delete
         [HttpPost]
