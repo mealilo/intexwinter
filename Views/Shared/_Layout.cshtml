@@ -69,15 +69,16 @@
             <h1 class="logo"><a href="index.html">Utah Department of Transportation</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href=index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
+            <partial name="_CookieConsentPartial" />
             <nav id="navbar" class="navbar">
-            
+
                 <ul>
                     <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Accidents">Accidents</a></li>
-                    @if(User.Identity.IsAuthenticated){
-                    <li><a class="nav-link scrollto btn btn-primary" asp-controller="Home" asp-action="AdminView">Admin</a></li>
-            }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a class="nav-link scrollto btn btn-primary" asp-controller="Home" asp-action="AdminView">Admin</a></li>
+                    }
 
                     <li><a href="blog.html">Blog</a></li>
                     @*<li class="dropdown">
@@ -99,13 +100,14 @@
                             <li><a href="#">Drop Down 4</a></li>
                         </ul>
                     </li>*@
-                  
+
 
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
 
         </div>
+        <partial name="_CookieConsentPartial" />
     </header><!-- End Header -->
     <main role="main" class="pb-3">
         @RenderBody()
