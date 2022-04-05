@@ -6,7 +6,7 @@
 }
 
 <partial name="_StatusMessage" for="StatusMessage" />
-@*<h4>@ViewData["Title"]</h4>
+<h4>@ViewData["Title"]</h4>
     <div>
         <p>To use an authenticator app go through the following steps:</p>
         <ol class="list">
@@ -46,7 +46,7 @@
                 </div>
             </li>
         </ol>
-    </div>*@
+    </div>
 
 @*@section Scripts {
         @await Html.PartialAsync("_ValidationScriptsPartial")
@@ -57,7 +57,7 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-    <script src="~/lib/qrcode/qrcode.min.js"></script>
+    <script src="~/lib/qrcode/qrcode.js"></script>
     <script type="text/javascript">
         new QRCode(document.getElementById("qrCode"),
          {
