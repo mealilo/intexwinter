@@ -9,6 +9,8 @@
     ViewData["Title"] = "Home Page";
 }
 
+<h1 onload="Hi();">Hello</h1>
+
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex justify-cntent-center align-items-center" style="height:10%;">
     <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
@@ -72,7 +74,7 @@
                     <tr class="text-center">
                         <td>@a.CRASH_ID</td>
                         <td class="text-center"><a class="btn btn-warning text-center">Edit</a>
-                                                <a @*onclick="DeleteConfirm();"*@ class="btn btn-danger text-center" asp-area="Home" asp-action="Delete" asp-route-crashid="@a.CRASH_ID">Delete</a></td>
+                                                <a onclick="ConfirmDelete();" class="btn btn-danger text-center" asp-area="Home" asp-action="Delete" asp-route-crashid="@a.CRASH_ID">Delete</a></td>
                         <td>@a.CRASH_DATETIME</td>
                         <td>@a.ROUTE</td>
                         <td>@a.MILEPOINT</td>
@@ -137,3 +139,20 @@
 
 
 </main><!-- End #main -->
+
+<script>
+    function ConfirmDelete() {
+
+
+        if (confirm('Are you sure you want to save this thing into the database?')) {
+            // Save it!
+            console.log('Thing was saved to the database.');
+        } else {
+            // Do nothing!
+            console.log('Thing was not saved to the database.');
+        }
+
+        function Hi() {
+            alert("hi");
+        }
+</script>

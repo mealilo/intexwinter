@@ -65,7 +65,7 @@ namespace intex2.Controllers
             Accident accident = repo.Accidents.Single(x => x.CRASH_ID == crashid);
             repo.Delete(accident);
 
-            return RedirectToAction("");
+            return RedirectToAction("AdminView");
         }
 
     }
