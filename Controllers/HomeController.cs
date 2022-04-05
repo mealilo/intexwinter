@@ -104,5 +104,11 @@ namespace intex2.Controllers
             return RedirectToAction("AdminView");
         }
 
+        [HttpGet]
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
     }
 }
