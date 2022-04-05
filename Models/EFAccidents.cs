@@ -23,5 +23,21 @@ namespace intex2.Models
             context.Remove(accident);
             context.SaveChanges();
         }
+
+        // This either adds the acident or deltes, it based on the crashid
+
+        public void DoAccident(Accident accident)
+        {
+            if (accident.CRASH_ID == 0)
+            {
+                context.Accidents.Add(accident);
+            }
+            else
+            {
+                context.Update(accident);
+            }
+
+            context.SaveChanges();
+        }
     }
 }

@@ -47,18 +47,56 @@ namespace intex2.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-
-        //Methods
-
-        //Delete
-        [HttpGet]
-        public IActionResult Delete(int crashid)
+        public IActionResult AdminView()
         {
 
+            List<Accident> AllAccidents = repo.Accidents.ToList();
+            ViewBag.accidents = AllAccidents;
+
+            return View();
+        }
+        //Methods
+        [HttpGet]
+        public IActionResult AddEditAccident(int crashid)
+        {
+
+            ViewBag.Cities = repo.Accidents.Select(x => x.CITY).Distinct().ToList();
+            ViewBag.Counties = repo.Accidents.Select(x => x.COUNTY_NAME).Distinct().ToList();
+            // if new bowler
+            if (crashid == 0)
+            {
+                return View();
+            }
+
+            else
+            {
+                Accident accident = repo.Accidents.Single(x => x.CRASH_ID == crashid);
+                return View(accident);
+            }
+
+        }
+
+        [HttpPost]
+        public IActionResult AddEditAccident(Accident accident)
+        {
+            if (ModelState.IsValid)
+            {
+                repo.DoAccident(accident);
+
+                return RedirectToAction("Index");
+            }
+
+            return View(accident);
+        }
+
+        //Delete
+        [HttpPost]
+        public IActionResult Delete(int crashid)
+        {
             Accident accident = repo.Accidents.Single(x => x.CRASH_ID == crashid);
             repo.Delete(accident);
 
-            return RedirectToAction("");
+            return RedirectToAction("AdminView");
         }
 
     }

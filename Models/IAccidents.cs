@@ -12,5 +12,8 @@ namespace intex2.Models
 
 
         public void Delete(Accident accident);
+
+        //add or edit accident
+        public void DoAccident(Accident accident);
     }
 }

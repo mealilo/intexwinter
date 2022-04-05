@@ -9,6 +9,7 @@
     ViewData["Title"] = "Home Page";
 }
 
+@*<script src="~/js/JavaScript.js"></script>*@
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex justify-cntent-center align-items-center" style="height:10%;">
     <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
@@ -17,7 +18,7 @@
         <div class="carousel-item active">
             <div class="carousel-container m-5">
                 <br />
-                <h2>Currently Viewing all Accidents</h2>
+                <h2 >Currently Viewing all Accidents</h2>
                 <p class="animate__animated animate__fadeInUp">
                     View, Edit, Delete, and Create All Accidents
                 </p>
@@ -32,17 +33,20 @@
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
+
+    
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
                 <br />
                 <br />
+                <input type="button" class="btn btn-primary" value="Add New Crash" />
             </div>
-            <table id="mytable" class="table  table-hover table-responsive table-sm table-striped">
+            <table id="mytable" class="table  table-hover  table-sm table-striped">
                 <thead>
                     <tr class="text-center">
                         <td>CRASH_ID</td>
-                        <td><a>Manipulate</a></td>
+                        <td>Manipulate</td>
                         <td>CRASH_DATETIME</td>
                         <td>ROUTE</td>
                         <td>MILEPOINT</td>
@@ -71,8 +75,13 @@
                     {
                     <tr class="text-center">
                         <td>@a.CRASH_ID</td>
-                        <td class="text-center"><a class="btn btn-warning text-center">Edit</a>
-                                                <a class="btn btn-danger text-center">Delete</a></td>
+                        <td class="text-center">
+                            <a asp-action="AddEditAccident" asp-route-crashid="@a.CRASH_ID" class="btn btn-warning text-center">Edit</a>
+                            <form>
+                                <button type="submit"  onclick="ConfirmDelete(@a.CRASH_ID);"   class="btn btn-danger text-center">Delete</button>
+                            </form>
+                        </td>
+                                                
                         <td>@a.CRASH_DATETIME</td>
                         <td>@a.ROUTE</td>
                         <td>@a.MILEPOINT</td>
