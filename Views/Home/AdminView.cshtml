@@ -19,6 +19,8 @@
                 <h2 >Currently Viewing all Accidents</h2>
                 <p class="animate__animated animate__fadeInUp">
                     View, Edit, Delete, and Create All Accidents
+                    
+
                 </p>
             </div>
         </div>
@@ -32,13 +34,15 @@
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
 
-    
+        
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
                 <br />
                 <br />
-                <input type="button" class="btn btn-primary" value="Add New Crash" />
+
+                <a class="btn btn-primary" asp-action="AddEditAccident" asp-route-crashid="0">Add New Crash</a>
+
             </div>
             <table id="mytable" class="table  table-hover  table-sm table-striped">
                 <thead>
@@ -71,38 +75,38 @@
                 <tbody>
                     @foreach (Accident a in ViewBag.accidents)
                     {
-                    <tr class="text-center">
-                        <td>@a.CRASH_ID</td>
-                        <td class="d-flex justify-content-center ">
-                            <a asp-action="AddEditAccident" asp-route-crashid="@a.CRASH_ID" class="btn btn-warning text-center m-1">Edit</a>
-                            <form>
-                                <button type="submit"  onclick="ConfirmDelete(@a.CRASH_ID);"   class="btn btn-danger text-center m-1">Delete</button>
-                            </form>
-                        </td>
-                                                
-                        <td>@a.CRASH_DATETIME</td>
-                        <td>@a.ROUTE</td>
-                        <td>@a.MILEPOINT</td>
-                        <td>@a.LAT_UTM_Y</td>
-                        <td>@a.LONG_UTM_X</td>
-                        <td>@a.MAIN_ROAD_NAME</td>
-                        <td>@a.CITY</td>
-                        <td>@a.COUNTY_NAME</td>
-                        <td>@a.CRASH_SEVERITY_ID</td>
-                        <td>@a.WORK_ZONE_RELATED</td>
-                        <td>@a.PEDESTRIAN_INVOLVED</td>
-                        <td>@a.BICYCLIST_INVOLVED</td>
-                        <td>@a.MOTORCYCLE_INVOLVED</td>
-                        <td>@a.IMPROPER_RESTRAINT</td>
-                        <td>@a.UNRESTRAINED</td>
-                        <td>@a.DUI</td>
-                        <td>@a.INTERSECTION_RELATED</td>
-                        <td>@a.WILD_ANIMAL_RELATED</td>
-                        <td>@a.DOMESTIC_ANIMAL_RELATED</td>
-                        <td>@a.OVERTURN_ROLLOVER</td>
-                        <td>@a.COMMERCIAL_MOTOR_VEH_INVOLVED</td>
+                        <tr class="text-center">
+                            <td>@a.CRASH_ID</td>
+                            <td class="d-flex justify-content-center ">
+                                <a asp-action="AddEditAccident" asp-route-crashid="@a.CRASH_ID" class="btn btn-warning text-center m-1">Edit</a>
+                                <form>
+                                    <button type="submit" onclick="ConfirmDelete(@a.CRASH_ID);" class="btn btn-danger text-center m-1">Delete</button>
+                                </form>
+                            </td>
 
-                    </tr>
+                            <td>@a.CRASH_DATETIME</td>
+                            <td>@a.ROUTE</td>
+                            <td>@a.MILEPOINT</td>
+                            <td>@a.LAT_UTM_Y</td>
+                            <td>@a.LONG_UTM_X</td>
+                            <td>@a.MAIN_ROAD_NAME</td>
+                            <td>@a.CITY</td>
+                            <td>@a.COUNTY_NAME</td>
+                            <td>@a.CRASH_SEVERITY_ID</td>
+                            <td>@a.WORK_ZONE_RELATED</td>
+                            <td>@a.PEDESTRIAN_INVOLVED</td>
+                            <td>@a.BICYCLIST_INVOLVED</td>
+                            <td>@a.MOTORCYCLE_INVOLVED</td>
+                            <td>@a.IMPROPER_RESTRAINT</td>
+                            <td>@a.UNRESTRAINED</td>
+                            <td>@a.DUI</td>
+                            <td>@a.INTERSECTION_RELATED</td>
+                            <td>@a.WILD_ANIMAL_RELATED</td>
+                            <td>@a.DOMESTIC_ANIMAL_RELATED</td>
+                            <td>@a.OVERTURN_ROLLOVER</td>
+                            <td>@a.COMMERCIAL_MOTOR_VEH_INVOLVED</td>
+
+                        </tr>
                     }
 
                 </tbody>

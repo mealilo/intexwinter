@@ -81,14 +81,16 @@ namespace intex2.Controllers
         [HttpPost]
         public IActionResult AddEditAccident(Accident accident)
         {
-            if (ModelState.IsValid)
-            {
-                repo.DoAccident(accident);
+        
+            ViewBag.Cities = repo.Accidents.Select(x => x.CITY).Distinct().ToList();
+            ViewBag.Counties = repo.Accidents.Select(x => x.COUNTY_NAME).Distinct().ToList();
 
-                return RedirectToAction("AdminView");
-            }
 
-            return View(accident);
+            // if we are having issues with models and the db check here cause i removed the model check.
+            repo.DoAccident(accident);
+
+            return RedirectToAction("AdminView");
+            
         }
 
         //Delete

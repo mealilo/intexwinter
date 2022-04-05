@@ -35,7 +35,7 @@
 
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="CRASH_DATETIME">Date and Time</label>
-                    <input type="datetime-local" asp-for="CRASH_DATETIME" class="form-control m-2" style="width:70%;" />
+                    <input type="text" asp-for="CRASH_DATETIME" class="form-control m-2" style="width:70%;" />
                 </div>
 
                 <div class="d-flex justify-content-between">
@@ -102,46 +102,50 @@
 
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="PEDESTRIAN_INVOLVED">Pedestrian Involved</label>
-                    <input type="checkbox" asp-for="PEDESTRIAN_INVOLVED"  class=" m-2 p-2"  />
+                    <input type="checkbox" asp-for="PEDESTRIAN_INVOLVED" class=" m-2 p-2" />
                 </div>
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="BICYCLIST_INVOLVED">Bicyclist Involved</label>
-                    <input type="checkbox" asp-for="BICYCLIST_INVOLVED"  class=" m-2 p-2" />
+                    <input type="checkbox" asp-for="BICYCLIST_INVOLVED" class=" m-2 p-2" />
                 </div>
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="MOTORCYCLE_INVOLVED">Motocycle Involved</label>
-                    <input type="checkbox" asp-for="MOTORCYCLE_INVOLVED"  class=" m-2 p-2" />
+                    <input type="checkbox" asp-for="MOTORCYCLE_INVOLVED" class=" m-2 p-2" />
                 </div>
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="IMPROPER_RESTRAINT">Improper Restraint</label>
-                    <input type="checkbox" asp-for="IMPROPER_RESTRAINT"  class=" m-2 p-2" />
+                    <input type="checkbox" asp-for="IMPROPER_RESTRAINT" class=" m-2 p-2" />
                 </div>
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="UNRESTRAINED">Unrestrained</label>
-                    <input type="checkbox" asp-for="UNRESTRAINED"  class=" m-2 p-2"/>
+                    <input type="checkbox" asp-for="UNRESTRAINED" class=" m-2 p-2" />
                 </div>
 
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="UNRESTRAINED">Unrestrained</label>
-                    <input type="checkbox" asp-for="UNRESTRAINED"  class=" m-2 p-2" />
+                    <input type="checkbox" asp-for="UNRESTRAINED" class=" m-2 p-2" />
                 </div>
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="DUI">DUI</label>
-                    <input type="checkbox" asp-for="DUI"  class=" m-2 p-2" />
+                    <input type="checkbox" asp-for="DUI" class=" m-2 p-2" />
                 </div>
 
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="INTERSECTION_RELATED">Intersection Related</label>
-                    <input type="checkbox" asp-for="INTERSECTION_RELATED" class=" m-2 p-2"/>
+                    <input type="checkbox" asp-for="INTERSECTION_RELATED" class=" m-2 p-2" />
                 </div>
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="UNRESTRAINED">Unrestrained</label>
-                    <input type="checkbox" asp-for="UNRESTRAINED"  class=" m-2 p-2"/>
+                    <input type="checkbox" asp-for="UNRESTRAINED" class=" m-2 p-2" />
                 </div>
 
                 <div class="d-flex justify-content-between">
-                    <label class="m-2 pt-2" asp-for="WILD_ANIMAL_RELATED">Animal Related</label>
-                    <input type="checkbox" asp-for="WILD_ANIMAL_RELATED" class=" m-2 p-2"/>
+                    <label class="m-2 pt-2" asp-for="WILD_ANIMAL_RELATED"> Wild Animal Related</label>
+                    <input type="checkbox" asp-for="WILD_ANIMAL_RELATED" class=" m-2 p-2" />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="DOMESTIC_ANIMAL_RELATED"> Domestic Animal Related</label>
+                    <input type="checkbox" asp-for="DOMESTIC_ANIMAL_RELATED" class=" m-2 p-2" />
                 </div>
 
                 <div class="d-flex justify-content-between">
@@ -150,7 +154,7 @@
                 </div>
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED">Commerical Vehicle Involved</label>
-                    <input type="checkbox" asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED"  class=" m-2 p-2" />
+                    <input type="checkbox" asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" class=" m-2 p-2" />
                 </div>
 
                 <div class="d-flex justify-content-between">
@@ -160,27 +164,27 @@
 
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="OLDER_DRIVER_INVOLVED">Older Driver Involved</label>
-                    <input type="checkbox" asp-for="OLDER_DRIVER_INVOLVED"  class=" m-2 p-2"/>
+                    <input type="checkbox" asp-for="OLDER_DRIVER_INVOLVED" class=" m-2 p-2" />
                 </div>
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="NIGHT_DARK_CONDITION">Night/Dark Condition</label>
-                    <input type="checkbox" asp-for="NIGHT_DARK_CONDITION"  class=" m-2 p-2" />
+                    <input type="checkbox" asp-for="NIGHT_DARK_CONDITION" class=" m-2 p-2" />
                 </div>
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="SINGLE_VEHICLE">Singlve Vehicle Involved</label>
-                    <input type="checkbox" asp-for="SINGLE_VEHICLE"  class=" m-2 p-2" />
+                    <input type="checkbox" asp-for="SINGLE_VEHICLE" class=" m-2 p-2" />
                 </div>
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="DISTRACTED_DRIVING">Distracted Driving</label>
-                    <input type="checkbox" asp-for="DISTRACTED_DRIVING"  class=" m-2 p-2"/>
+                    <input type="checkbox" asp-for="DISTRACTED_DRIVING" class=" m-2 p-2" />
                 </div>
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="DROWSY_DRIVING">Drowsy Driving</label>
-                    <input type="checkbox" asp-for="DROWSY_DRIVING"  class=" m-2 p-2" />
+                    <input type="checkbox" asp-for="DROWSY_DRIVING" class=" m-2 p-2" />
                 </div>
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="ROADWAY_DEPARTURE">Roadway Departure</label>
-                    <input type="checkbox" asp-for="ROADWAY_DEPARTURE"  class=" m-2 p-2" />
+                    <input type="checkbox" asp-for="ROADWAY_DEPARTURE" class=" m-2 p-2" />
                 </div>
 
                 <div class="d-flex justify-content-center">
