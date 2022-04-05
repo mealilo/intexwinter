@@ -7,16 +7,17 @@
     <title>Anyar Bootstrap Template - Index</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
-
+    <!--favicon-->
     <!--Data Table Links-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.5/af-2.3.7/b-2.2.2/cr-1.5.5/date-1.1.2/fc-4.0.2/fh-3.2.2/kt-2.6.4/r-2.2.9/sc-2.0.5/sb-1.3.2/sp-2.0.0/datatables.min.css" />
 
 
     <!-- Favicons -->
-    <link href="~/img/favicon.png" rel="icon">
-    <link href="~/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+    @*<link href="~/img/favicon.png" rel="icon">
+        <link href="~/img/apple-touch-icon.png" rel="apple-touch-icon">*@
+    <link rel="icon" type="image/x-icon" href="~/img/accident (1).png">
     <!-- Google Fonts -->
+    
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
@@ -120,6 +121,7 @@
         <script src="~/js/site.js" asp-append-version="true"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/af-2.3.7/b-2.2.2/cr-1.5.5/date-1.1.2/fc-4.0.2/fh-3.2.2/kt-2.6.4/r-2.2.9/sc-2.0.5/sb-1.3.2/sp-2.0.0/datatables.min.js"></script>
 
+
         @RenderSection("Scripts", required: false)
 
         @*<div class="footer-newsletter">
@@ -185,6 +187,10 @@
                             <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
                             <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
                             <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                            @if (User.Identity.IsAuthenticated)
+            {
+                        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            } 
                         </div>
                     </div>
 
@@ -194,6 +200,19 @@
 
 
     </footer><!-- End Footer -->
+    <!-- Vendor JS Files -->
+    <!-- <script src="~/vendor/aos/aos.js"></script>
+
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/vendor/php-email-form/validate.js"></script>
+    <a href="https://www.flaticon.com/free-icons/accident" title="accident icons">Accident icons created by surang - Flaticon</a>
+    <!-- Template Main JS File -->
+    <script src="~/js/site.js"></script>
+
+    -->
 </body>
 
 

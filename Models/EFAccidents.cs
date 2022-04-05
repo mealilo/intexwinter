@@ -17,5 +17,11 @@ namespace intex2.Models
         }
 
         public IQueryable<Accident> Accidents => context.Accidents;
+
+        public void Delete(Accident accident)
+        {
+            context.Remove(accident);
+            context.SaveChanges();
+        }
     }
 }

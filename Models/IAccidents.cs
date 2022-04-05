@@ -9,5 +9,8 @@ namespace intex2.Models
     {
 
         IQueryable<Accident> Accidents { get; }
+
+
+        public void Delete(Accident accident);
     }
 }
