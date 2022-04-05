@@ -58,10 +58,9 @@ namespace intex2.Controllers
         //Methods
 
         //Delete
-        [HttpGet]
+        [HttpPost]
         public IActionResult Delete(int crashid)
         {
-
             Accident accident = repo.Accidents.Single(x => x.CRASH_ID == crashid);
             repo.Delete(accident);
 

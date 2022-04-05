@@ -25,15 +25,29 @@
 // Actually code we are using
 
 //This method confrims whether you want the accident to be deleted or not
-function ConfirmDelete(){
+function ConfirmDelete(crashid) {
 
 
-        if (confirm('Are you sure you want to save this thing into the database?')) {
-            // Save it!
-            console.log('Thing was saved to the database.');
-        } else {
-            // Do nothing!
-            console.log('Thing was not saved to the database.');
+
+  
+
+    if (confirm('Are you sure you want to save this thing into the database?')) {
+        // Save it!
+
+        //sends ajax request to delete if confrimed is true
+        $.ajax({
+            url: "/Home/Delete",
+            data: { "crashid": crashid},
+            type: 'POST'
+        })
+
+        location.reload(true);
+        alert("Delete successful.")
+
+    } else {
+        // Do nothing!
+        alert("Delete Cancelled");
+    }
 }
 
 //$(document).ready(function () {
