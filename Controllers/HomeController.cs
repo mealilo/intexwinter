@@ -47,7 +47,14 @@ namespace intex2.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        public IActionResult AdminView()
+        {
 
+            List<Accident> AllAccidents = repo.Accidents.ToList();
+            ViewBag.accidents = AllAccidents;
+
+            return View();
+        }
         //Methods
 
         //Delete
