@@ -88,9 +88,12 @@ namespace intex2
             });
 
             // Add two factor authentication
-            services.AddIdentityCore<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentityCore<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                //.AddEntityFrameworkStores<AppIdentityDBContext>()
+                //.AddTokenProvider<DataProtectorTokenProvider<IdentityUser>>(TokenOptions.DefaultProvider);
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AppIdentityDBContext>()
-                .AddTokenProvider<DataProtectorTokenProvider<IdentityUser>>(TokenOptions.DefaultProvider);
+                .AddDefaultTokenProviders(); 
 
             services.ConfigureApplicationCookie(options =>
             {
