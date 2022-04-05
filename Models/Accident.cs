@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace intex2.Models
 {
-    [Table("Utah_Crash_Data_2020")]
+    [Table("accidenaccidentdatadt")]
     public class Accident
     {
         [Key]
         [Required]
         public int CRASH_ID {get; set;}
-        public string CRASH_DATETIME { get; set; } 
+        public DateTime CRASH_DATETIME { get; set; } 
         public int ROUTE { get; set; }
         public double MILEPOINT { get; set; }
         public double LAT_UTM_Y { get; set; }
