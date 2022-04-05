@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -41,10 +42,19 @@ namespace intex2
             });
 
             services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddDefaultUI()
                 .AddEntityFrameworkStores<AppIdentityDBContext>();
 
+
+            services.AddAuthorization(options =>
+        options.AddPolicy("TwoFactorEnabled",
+        x => x.RequireClaim("amr", "mfa")));
+
+            //Repository
             services.AddScoped<IAccidents, EFAccidents>();
             services.AddRazorPages();
+            //configure passwords!!
+
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.
@@ -65,6 +75,11 @@ namespace intex2
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
                 options.User.RequireUniqueEmail = false;
             });
+
+            // Add two factor authentication
+            services.AddIdentityCore<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<AppIdentityDBContext>()
+                .AddTokenProvider<DataProtectorTokenProvider<IdentityUser>>(TokenOptions.DefaultProvider);
 
             services.ConfigureApplicationCookie(options =>
             {

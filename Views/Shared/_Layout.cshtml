@@ -57,7 +57,7 @@
                 <i class="bi bi-phone-fill phone-icon"></i> +1 5589 55488 55
             </div>
             <div class="cta d-none d-md-block">
-                <a href="#about" class="scrollto">Get Started</a>
+                <partial name="_LoginPartial" />
             </div>
         </div>
     </div>
@@ -71,12 +71,16 @@
             <!-- <a href=index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
             <nav id="navbar" class="navbar">
+            
                 <ul>
                     <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Accidents">Accidents</a></li>
-                    <li><a class="nav-link scrollto" asp-controller="Home" asp-action="About">About</a></li>
+                    @if(User.Identity.IsAuthenticated){
+                    <li><a class="nav-link scrollto btn btn-primary" asp-controller="Home" asp-action="AdminView">Admin</a></li>
+            }
+
                     <li><a href="blog.html">Blog</a></li>
-                    <li class="dropdown">
+                    @*<li class="dropdown">
                         <a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="#">Drop Down 1</a></li>
@@ -94,9 +98,9 @@
                             <li><a href="#">Drop Down 3</a></li>
                             <li><a href="#">Drop Down 4</a></li>
                         </ul>
-                    </li>
-                    <li><a class="cta d-none d-md-block" href="#contact">Log In</a></li>
-                    <partial name="_LoginPartial" />
+                    </li>*@
+                  
+
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -121,20 +125,20 @@
         @RenderSection("Scripts", required: false)
 
         @*<div class="footer-newsletter">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <h4>Our Newsletter</h4>
-                            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                        </div>
-                        <div class="col-lg-6">
-                            <form action="" method="post">
-                                <input type="email" name="email"><input type="submit" value="Subscribe">
-                            </form>
-                        </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h4>Our Newsletter</h4>
+                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <form action="" method="post">
+                            <input type="email" name="email"><input type="submit" value="Subscribe">
+                        </form>
                     </div>
                 </div>
-            </div>*@
+            </div>
+        </div>*@
 
         <div class="footer-top">
             <div class="container">
@@ -197,7 +201,7 @@
 
     </footer><!-- End Footer -->
     <!-- Vendor JS Files -->
-    <script src="~/vendor/aos/aos.js"></script>
+    <!-- <script src="~/vendor/aos/aos.js"></script>
 
     <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/vendor/glightbox/js/glightbox.min.js"></script>
@@ -207,6 +211,8 @@
     <a href="https://www.flaticon.com/free-icons/accident" title="accident icons">Accident icons created by surang - Flaticon</a>
     <!-- Template Main JS File -->
     <script src="~/js/site.js"></script>
+
+    -->
 </body>
 
 
