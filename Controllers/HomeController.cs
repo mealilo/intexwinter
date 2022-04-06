@@ -242,5 +242,10 @@ namespace intex2.Controllers
             return View(data);
         }
 
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
     }
 }
