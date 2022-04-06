@@ -45,6 +45,7 @@
             <table id="mytable" class="table  table-hover  table-sm table-striped">
                 <thead>
                     <tr class="text-center">
+                        <td>Severity Model</td>
                         <td>CRASH_ID</td>
                         <td>Manipulate</td>
                         <td>CRASH_DATETIME</td>
@@ -74,14 +75,17 @@
                     @foreach (Accident a in ViewBag.accidents)
                     {
                     <tr class="text-center">
+                        <td class="text-center">
+                            <a asp-action="Score" asp-route-crashid="@a.CRASH_ID" class="btn btn-primary text-center">Score</a>
+                        </td>
                         <td>@a.CRASH_ID</td>
                         <td class="text-center">
                             <a asp-action="AddEditAccident" asp-route-crashid="@a.CRASH_ID" class="btn btn-warning text-center">Edit</a>
                             <form>
-                                <button type="submit"  onclick="ConfirmDelete(@a.CRASH_ID);"   class="btn btn-danger text-center">Delete</button>
+                                <button type="submit" onclick="ConfirmDelete(@a.CRASH_ID);" class="btn btn-danger text-center">Delete</button>
                             </form>
                         </td>
-                                                
+
                         <td>@a.CRASH_DATETIME</td>
                         <td>@a.ROUTE</td>
                         <td>@a.MILEPOINT</td>
