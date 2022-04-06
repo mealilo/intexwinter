@@ -130,7 +130,9 @@ namespace intex2
             app.UseAuthorization();
             app.Use(async (context, next) =>
             {
-                context.Response.Headers.Add("Content-Security-Policy", "default-src 'self' cdn.jsdelivr.net cdn.datatables.net;");
+
+                //FIX ME
+               // context.Response.Headers.Add("Content-Security-Policy", "script-src 'unsafe-inline'; connect-src 'code.jquery.com'  cdn.jsdelivr.net cdn.datatables.net;");
                 await next();
             });
             app.UseEndpoints(endpoints =>
@@ -141,7 +143,7 @@ namespace intex2
 
                 endpoints.MapRazorPages();
             });
-        }
+        }                                                                             
     }
 
 }
