@@ -100,8 +100,18 @@
                     <div class="row">
                         <div class="col-md-4">
                             <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                                <br />
+                                <br />
                                 <h4>Create a new account.</h4>
                                 <hr />
+                                <h5>Passwords must include:</h5>
+                                <ul>
+                                    <li>
+                                        Numbers
+                                    </li>
+                                    <li>At least 12 characters </li>
+                                    <li>Non-letters</li>
+                                </ul>
                                 <div asp-validation-summary="All" class="text-danger"></div>
                                 <div class="form-group">
                                     <label asp-for="Input.Email"></label>
@@ -110,12 +120,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Input.Password"></label>
-                                    <input asp-for="Input.Password" class="form-control" />
+                                    <input id="myInput" type="password" asp-for="Input.Password" class="form-control" />
+                                    <input type="checkbox" onclick="myFunction()">Show Password
                                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Input.ConfirmPassword"></label>
-                                    <input asp-for="Input.ConfirmPassword" class="form-control" />
+                                    <input  type="password" asp-for="Input.ConfirmPassword" class="form-control" />
                                     <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Register</button>
@@ -162,6 +173,16 @@
 
     </section> <!-- End Services Section -->
 
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myInput");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 
 
 </main><!-- End #main -->
