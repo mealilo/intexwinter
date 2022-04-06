@@ -81,6 +81,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li><a class="nav-link scrollto btn btn-primary" asp-controller="Home" asp-action="AdminView">Accidents Admin</a></li>
+                        <li><a class="btn btn-primary" asp-action="AddEditAccident" asp-route-crashid="0">Add New Crash</a></li>
                     }
                     <li><a class="nav-link scrollto btn btn-primary" asp-controller="Home" asp-action="Index1">Accidents test Admin</a></li>
                     @*<li class="dropdown">
