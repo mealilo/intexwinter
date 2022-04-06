@@ -1,6 +1,9 @@
 ﻿using intex2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.ML.OnnxRuntime;
+using Microsoft.ML.OnnxRuntime.Tensors;
+using Microsoft.ML.Transforms.Onnx;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,11 +17,17 @@ namespace intex2.Controllers
 
         //creates repo for the DB
         private IAccidents repo { get; set; }
+        private InferenceSession _session;
 
-        public HomeController(IAccidents temp)
+
+        public HomeController(IAccidents temp, InferenceSession session)
         {
             repo = temp;
+            _session = session;
+
         }
+
+
 
         public IActionResult Index()
         {
@@ -97,6 +106,30 @@ namespace intex2.Controllers
             repo.Delete(accident);
 
             return RedirectToAction("AdminView");
+        }
+
+        //Onnx
+        [HttpGet]
+        public IActionResult Score()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Score(CrashSeverityData data)
+        {
+            var result = _session.Run(new List<NamedOnnxValue>
+            {
+                NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
+            });
+            Tensor<float> score = result.First().AsTensor<float>();
+            var prediction = new Prediction { PredictedValue = score.First() };
+            result.Dispose();
+
+
+
+            ViewBag.Message = "Predicted Score: " + Math.Round(prediction.PredictedValue,0);
+            return View(data);
         }
 
     }

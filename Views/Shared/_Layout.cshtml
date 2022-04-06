@@ -77,7 +77,8 @@
                     <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Accidents">Accidents</a></li>
                     @if(User.Identity.IsAuthenticated){
                     <li><a class="nav-link scrollto btn btn-primary" asp-controller="Home" asp-action="AdminView">Admin</a></li>
-            }
+                    }
+                    <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Score">Crash Predictor</a></li>
 
                     <li><a href="blog.html">Blog</a></li>
                     @*<li class="dropdown">
