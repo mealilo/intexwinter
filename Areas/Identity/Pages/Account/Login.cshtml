@@ -53,8 +53,9 @@
                                             </div>
                                             <div class="form-group">
                                                 <label asp-for="Input.Password"></label>
-                                                <input asp-for="Input.Password" class="form-control" />
+                                                <input id="myInput" asp-for="Input.Password" class="form-control" />
                                                 <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                                <input type="checkbox" onclick="myFunction()">Show Password
                                             </div>
                                             <div class="form-group">
                                                 <div class="checkbox">
@@ -112,14 +113,23 @@
                         </div>
                         @section Scripts {
                             <partial name="_ValidationScriptsPartial" />
-                            }
-                        </div>
+                        }
+                    </div>
                 </div>
             </div>
         </div>
 
     </section> <!-- End Services Section -->
 
-
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myInput");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 
 </main><!-- End #main -->
