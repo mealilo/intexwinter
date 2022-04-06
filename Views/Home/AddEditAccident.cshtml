@@ -1,62 +1,202 @@
 ﻿@model Accident
-<h2>Add/Edit Accident</h2>
-<p>Please fill out all Accident information. </p>
 
-<form method="post" asp-controller="Home" asp-action="AddEditAccident">
+<section id="hero" class="d-flex justify-cntent-center align-items-center" style="height:10%;">
+    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
 
-    <div class="alert-danger" asp-validation-summary="All"></div>
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+            <div class="carousel-container m-5">
+                <br />
+                <h2>Accident Information</h2>
+                <p class="animate__animated animate__fadeInUp">
+                Please fill out all Accident information.
+                </p>
+            </div>
+        </div>
 
-    <h4>Accident Information</h4>
 
-    <input type="hidden" asp-for="CRASH_ID" />
-
-    <div class="form-group">
-        <label asp-for="CRASH_DATETIME">Date and Time</label>
-        <input type="datetime" asp-for="CRASH_DATETIME" class="form-control" />
     </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+    <section id="services" class="services">
+        <div class="container" style="width:25%;" data-aos="fade-up">
+
+            <div class="section-title">
+                <br />
+                <br />
+            </div>
+            <form method="post" asp-controller="Home" asp-action="AddEditAccident">
+
+                <div class="alert-danger" asp-validation-summary="All"></div>
+
+                <input type="hidden" asp-for="CRASH_ID" />
+
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="CRASH_DATETIME">Date and Time</label>
+                    <input type="datetime-local" asp-for="CRASH_DATETIME" class="form-control m-2" style="width:50%;" />
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="CITY">City</label>
+                    <select class="form-control m-2" style="width: 50%; " asp-for="CITY">
+                        @foreach (string s in ViewBag.Cities)
+                        {
+                            <option value="@s">@s</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="COUNTY_NAME">County</label>
+                    <select class="form-control m-2" style="width: 50%; " asp-for="COUNTY_NAME">
+                        @foreach (string s in ViewBag.Counties)
+                        {
+                            <option value="@s">@s</option>
+                        }
+                    </select>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="MAIN_ROAD_NAME">Road Name</label>
+                    <input asp-for="MAIN_ROAD_NAME" class="form-control m-2" style="width: 50%; " />
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="CRASH_SEVERITY_ID">Crash Severity</label>
+                    <input list="tickmarks" type="range" min="1" max="5" asp-for="CRASH_SEVERITY_ID" class="form-control m-2" style="width: 70%;" />
+                    <datalist id="tickmarks">
+                        <option value="1" label="1"></option>
+                        <option value="2" label="2"></option>
+                        <option value="3" label="3"></option>
+                        <option value="4" label="4"></option>
+                        <option value="5" label="5"></option>
+
+                    </datalist>
+                </div>
 
 
-    public string CRASH_DATETIME { get; set; }
-    public int ROUTE { get; set; }
-    public double MILEPOINT { get; set; }
-    public double LAT_UTM_Y { get; set; }
-    public double LONG_UTM_X { get; set; }
-    public string MAIN_ROAD_NAME { get; set; }
-    public string CITY { get; set; }
-    public string COUNTY_NAME { get; set; }
-    public int CRASH_SEVERITY_ID { get; set; }
-    public string WORK_ZONE_RELATED { get; set; }
-    public string PEDESTRIAN_INVOLVED { get; set; }
-    public string BICYCLIST_INVOLVED { get; set; }
-    public string MOTORCYCLE_INVOLVED { get; set; }
-    public string IMPROPER_RESTRAINT { get; set; }
-    public string UNRESTRAINED { get; set; }
-    public string DUI { get; set; }
-    public string INTERSECTION_RELATED { get; set; }
-    public string WILD_ANIMAL_RELATED { get; set; }
-    public string DOMESTIC_ANIMAL_RELATED { get; set; }
-    public string OVERTURN_ROLLOVER { get; set; }
-    public string COMMERCIAL_MOTOR_VEH_INVOLVED { get; set; }
-    public string TEENAGE_DRIVER_INVOLVED { get; set; }
-    public string OLDER_DRIVER_INVOLVED { get; set; }
-    public string NIGHT_DARK_CONDITION { get; set; }
-    public string SINGLE_VEHICLE { get; set; }
-    public string DISTRACTED_DRIVING { get; set; }
-    public string DROWSY_DRIVING { get; set; }
-    public string ROADWAY_DEPARTURE { get; set; }
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="ROUTE">Route #</label>
+                    <input type="number" asp-for="ROUTE" class="form-control m-2" style="width: 50%; " />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="MILEPOINT">Milepoint</label>
+                    <input type="number" asp-for="MILEPOINT" class="form-control m-2" style="width: 50%; " />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="LAT_UTM_Y">Latitude (UTM_Y Format)</label>
+                    <input type="number" asp-for="LAT_UTM_Y" class="form-control m-2" style="width: 50%; " />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="LONG_UTM_X">Longitude (UTM_Y Format)</label>
+                    <input type="number" asp-for="LONG_UTM_X" class="form-control m-2" style="width: 50%; " />
+                </div>
+                @*Booleans*@
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="WORK_ZONE_RELATED">Work Zone Related</label>
+                    <input type="checkbox" asp-for="WORK_ZONE_RELATED" class=" m-2 p-2" />
+                </div>
 
 
 
-    @*<select asp-for="TeamID">
-            @foreach (Team team in ViewBag.Teams)
-            {
-                <option value="@team.TeamID">@team.TeamName</option>
-            }
-        </select>*@
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="PEDESTRIAN_INVOLVED">Pedestrian Involved</label>
+                    <input type="checkbox" asp-for="PEDESTRIAN_INVOLVED" class=" m-2 p-2" />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="BICYCLIST_INVOLVED">Bicyclist Involved</label>
+                    <input type="checkbox" asp-for="BICYCLIST_INVOLVED" class=" m-2 p-2" />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="MOTORCYCLE_INVOLVED">Motocycle Involved</label>
+                    <input type="checkbox" asp-for="MOTORCYCLE_INVOLVED" class=" m-2 p-2" />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="IMPROPER_RESTRAINT">Improper Restraint</label>
+                    <input type="checkbox" asp-for="IMPROPER_RESTRAINT" class=" m-2 p-2" />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="UNRESTRAINED">Unrestrained</label>
+                    <input type="checkbox" asp-for="UNRESTRAINED" class=" m-2 p-2" />
+                </div>
 
-    <div class="float-end">
-        <input class="btn btn-primary" type="submit" value="Confirm Accident" />
-    </div>
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="UNRESTRAINED">Unrestrained</label>
+                    <input type="checkbox" asp-for="UNRESTRAINED" class=" m-2 p-2" />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="DUI">DUI</label>
+                    <input type="checkbox" asp-for="DUI" class=" m-2 p-2" />
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="INTERSECTION_RELATED">Intersection Related</label>
+                    <input type="checkbox" asp-for="INTERSECTION_RELATED" class=" m-2 p-2" />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="UNRESTRAINED">Unrestrained</label>
+                    <input type="checkbox" asp-for="UNRESTRAINED" class=" m-2 p-2" />
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="WILD_ANIMAL_RELATED"> Wild Animal Related</label>
+                    <input type="checkbox" asp-for="WILD_ANIMAL_RELATED" class=" m-2 p-2" />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="DOMESTIC_ANIMAL_RELATED"> Domestic Animal Related</label>
+                    <input type="checkbox" asp-for="DOMESTIC_ANIMAL_RELATED" class=" m-2 p-2" />
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="OVERTURN_ROLLOVER">Overturn Rollover</label>
+                    <input type="checkbox" asp-for="OVERTURN_ROLLOVER" class=" m-2 p-2" />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED">Commerical Vehicle Involved</label>
+                    <input type="checkbox" asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" class=" m-2 p-2" />
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="TEENAGE_DRIVER_INVOLVED">Teenager Involved</label>
+                    <input type="checkbox" asp-for="TEENAGE_DRIVER_INVOLVED" class=" m-2 p-2" />
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="OLDER_DRIVER_INVOLVED">Older Driver Involved</label>
+                    <input type="checkbox" asp-for="OLDER_DRIVER_INVOLVED" class=" m-2 p-2" />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="NIGHT_DARK_CONDITION">Night/Dark Condition</label>
+                    <input type="checkbox" asp-for="NIGHT_DARK_CONDITION" class=" m-2 p-2" />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="SINGLE_VEHICLE">Singlve Vehicle Involved</label>
+                    <input type="checkbox" asp-for="SINGLE_VEHICLE" class=" m-2 p-2" />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="DISTRACTED_DRIVING">Distracted Driving</label>
+                    <input type="checkbox" asp-for="DISTRACTED_DRIVING" class=" m-2 p-2" />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="DROWSY_DRIVING">Drowsy Driving</label>
+                    <input type="checkbox" asp-for="DROWSY_DRIVING" class=" m-2 p-2" />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="ROADWAY_DEPARTURE">Roadway Departure</label>
+                    <input type="checkbox" asp-for="ROADWAY_DEPARTURE" class=" m-2 p-2" />
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <input class="btn btn-primary" type="submit" value="Confirm Accident" />
+                </div>
 
 
-</form>
+            </form>
+
+            </div>
+    </section> <!-- End Services Section -->
+
+
+
+</main><!-- End #main -->

@@ -7,19 +7,24 @@ using System.Threading.Tasks;
 
 namespace intex2.Models
 {
-    //[Table("accidenaccidentdatadt")]
-    [Table("Utah_Crash_Data_2020")]
+    [Table("accidenaccidentdatadt")]
+    //[Table("shrunk")]
     public class Accident
     {
         [Key]
-        [Required]
         public int CRASH_ID {get; set;}
-        // public DateTime CRASH_DATETIME { get; set; } 
-        public string CRASH_DATETIME { get; set; } 
-        public int ROUTE { get; set; }
-        public double MILEPOINT { get; set; }
-        public double LAT_UTM_Y { get; set; }
-        public double LONG_UTM_X { get; set; }
+        [Required(ErrorMessage = "Date And Time Must Be Specified")]
+        public DateTime? CRASH_DATETIME { get; set; }
+        //public string CRASH_DATETIME { get; set; }
+  
+        [Required (ErrorMessage ="Route Number Must Be Specified")]
+        public int? ROUTE { get; set; }
+        [Required(ErrorMessage = "Milepoint Must Be Specified")]
+        public double? MILEPOINT { get; set; }
+        [Required (ErrorMessage ="Lattitude Must Be Specified")]
+        public double? LAT_UTM_Y { get; set; }
+        [Required(ErrorMessage = "Longitude Must Be Specified")]
+        public double? LONG_UTM_X { get; set; }
         public string MAIN_ROAD_NAME { get; set; }
         public string CITY { get; set; }
         public string COUNTY_NAME { get; set; }

@@ -1,6 +1,7 @@
 using intex2.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
@@ -36,10 +37,20 @@ namespace intex2
             {
                 options.UseMySql(Configuration["ConnectionStrings:UdotDBConnection"]);
             });
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential 
+                // cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                // requires using Microsoft.AspNetCore.Http;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
 
+            services.AddRazorPages();
+        
 
-            // sets up identity stuff
-            services.AddDbContext<AppIdentityDBContext>(options =>
+        // sets up identity stuff
+        services.AddDbContext<AppIdentityDBContext>(options =>
             {
                 options.UseMySql(Configuration["ConnectionStrings:UdotDBConnection"]);
             });
@@ -80,9 +91,12 @@ namespace intex2
             });
 
             // Add two factor authentication
-            services.AddIdentityCore<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentityCore<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                //.AddEntityFrameworkStores<AppIdentityDBContext>()
+                //.AddTokenProvider<DataProtectorTokenProvider<IdentityUser>>(TokenOptions.DefaultProvider);
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AppIdentityDBContext>()
-                .AddTokenProvider<DataProtectorTokenProvider<IdentityUser>>(TokenOptions.DefaultProvider);
+                .AddDefaultTokenProviders(); 
 
             services.ConfigureApplicationCookie(options =>
             {
@@ -119,10 +133,16 @@ namespace intex2
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.Use(async (context, next) =>
+            {
 
+                //FIX ME
+               // context.Response.Headers.Add("Content-Security-Policy", "script-src 'unsafe-inline'; connect-src 'code.jquery.com'  cdn.jsdelivr.net cdn.datatables.net;");
+                await next();
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -131,7 +151,7 @@ namespace intex2
 
                 endpoints.MapRazorPages();
             });
-        }
+        }                                                                             
     }
 
 }
