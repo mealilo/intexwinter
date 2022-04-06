@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Microsoft.ML.OnnxRuntime;
+using Microsoft.ML.OnnxRuntime.Tensors;
+using Microsoft.ML.Transforms.Onnx;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,11 +19,17 @@ namespace intex2.Controllers
 
         //creates repo for the DB
         private IAccidents repo { get; set; }
+        private InferenceSession _session;
 
-        public HomeController(IAccidents temp)
+
+        public HomeController(IAccidents temp, InferenceSession session)
         {
             repo = temp;
+            _session = session;
+
         }
+
+
 
         public IActionResult Index()
         {
@@ -120,10 +129,117 @@ namespace intex2.Controllers
             return RedirectToAction("AdminView");
         }
 
+        //Onnx
         [HttpGet]
-        public IActionResult Privacy()
+        public IActionResult Score(int? crashid)
         {
-            return View();
+            if (crashid != null)
+            {
+            Accident accident = repo.Accidents.Single(x => x.CRASH_ID == crashid);
+            CrashSeverityData data = new CrashSeverityData();
+            data.route = Convert.ToSingle(accident.ROUTE);
+            data.milepoint = Convert.ToSingle(accident.ROUTE);
+            data.lat_utm_y = Convert.ToSingle(accident.LAT_UTM_Y);
+            data.long_utm_x = Convert.ToSingle(accident.LONG_UTM_X);
+
+
+                if (accident.PEDESTRIAN_INVOLVED == "TRUE")
+                {
+                    data.pedestrian_involved = 1;
+                }
+                else
+                {
+                    data.pedestrian_involved = 0;
+                }
+
+                if (accident.MOTORCYCLE_INVOLVED == "TRUE")
+                {
+                    data.motorcycle_involved = 1;
+                }
+                else
+                {
+                    data.motorcycle_involved = 0;
+                }
+
+                if (accident.INTERSECTION_RELATED == "TRUE")
+                {
+                    data.intersection_related = 1;
+                }
+                else
+                {
+                    data.intersection_related = 0;
+                }
+
+                if (accident.OVERTURN_ROLLOVER == "TRUE")
+                {
+                    data.overturn_rollover = 1;
+                }
+                else
+                {
+                    data.overturn_rollover = 0;
+                }
+
+                if (accident.OLDER_DRIVER_INVOLVED == "TRUE")
+                {
+                    data.older_driver_involved = 1;
+                }
+                else
+                {
+                    data.older_driver_involved = 0;
+                }
+
+                if (accident.NIGHT_DARK_CONDITION == "TRUE")
+                {
+                    data.night_dark_condition = 1;
+                }
+                else
+                {
+                    data.night_dark_condition = 0;
+                }
+
+                if (accident.DISTRACTED_DRIVING == "TRUE")
+                {
+                    data.distracted_driving = 1;
+                }
+                else
+                {
+                    data.distracted_driving = 0;
+                }
+
+                var result = _session.Run(new List<NamedOnnxValue>
+                {
+                    NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
+                });
+                    Tensor<float> score = result.First().AsTensor<float>();
+                    var prediction = new Prediction { PredictedValue = score.First() };
+                    result.Dispose();
+                    ViewBag.Message = "Predicted Score: " + Math.Round(prediction.PredictedValue, 0);
+
+                return View(data);
+            }
+            else
+            {
+                return View();
+            }
+
+
+        }
+
+        [HttpPost]
+        public IActionResult Score(CrashSeverityData data)
+        {
+            var result = _session.Run(new List<NamedOnnxValue>
+            {
+                NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
+            });
+            Tensor<float> score = result.First().AsTensor<float>();
+            var prediction = new Prediction { PredictedValue = score.First() };
+            result.Dispose();
+
+
+
+            ViewBag.Message = "Predicted Score: " + Math.Round(prediction.PredictedValue,0);
+            return View(data);
         }
 
     }
