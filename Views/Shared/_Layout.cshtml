@@ -17,7 +17,7 @@
         <link href="~/img/apple-touch-icon.png" rel="apple-touch-icon">*@
     <link rel="icon" type="image/x-icon" href="~/img/accident (1).png">
     <!-- Google Fonts -->
-    
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
@@ -50,12 +50,14 @@
 <body>
 
     <!-- ======= Top Bar ======= -->
-    <div id="topbar" class="fixed-top d-flex align-items-center ">
+    <div id="topbar" class="fixed-top d-flex align-items-center topbar-inner-pages">
         <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
             <div class="contact-info d-flex align-items-center">
-                <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">info@example.com</a>
-                <i class="bi bi-phone-fill phone-icon"></i> +1 5589 55488 55
+                <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">IS15.transplan@slcgov.com</a>
+                <i class="bi bi-phone-fill phone-icon"></i> +1 558 548 5555
             </div>
+            <img style="height:50px;" src="~/img/logo-footer__large.png" />
+            
             <div class="cta d-none d-md-block">
                 <partial name="_LoginPartial" />
             </div>
@@ -63,7 +65,7 @@
     </div>
 
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top d-flex align-items-center ">
+    <header id="header" class="fixed-top d-flex align-items-center header-inner-pages">
         <div class="container d-flex align-items-center justify-content-between">
 
             <h1 class="logo"><a href="index.html">Utah Department of Transportation</a></h1>
@@ -73,36 +75,37 @@
             <nav id="navbar" class="navbar">
 
                 <ul>
+                    <li><a asp-controller="Home" asp-action="Search">Search</a></li>
                     <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a class="nav-link scrollto" asp-controller="Home" asp-action="testtables">Home</a></li>
                     @if (!User.Identity.IsAuthenticated)
                     {
-                    <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Accidents">Accidents</a></li>
-                     }
+                        <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Accidents">View Accidents</a></li>
+                    }
                     @if (User.Identity.IsAuthenticated)
-                        {
-                    <li><a class="nav-link scrollto btn btn-primary" asp-controller="Home" asp-action="AdminView">Accidents Admin</a></li>
-                        }
+                    {
+                        <li><a class="nav-link scrollto" asp-controller="Home" asp-action="AdminView">Accidents Admin</a></li>
+                    }
 
-                    @*<li class="dropdown">
-            <a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-                <li><a href="#">Drop Down 1</a></li>
-                <li class="dropdown">
-                    <a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                    <ul>
-                        <li><a href="#">Deep Drop Down 1</a></li>
-                        <li><a href="#">Deep Drop Down 2</a></li>
-                        <li><a href="#">Deep Drop Down 3</a></li>
-                        <li><a href="#">Deep Drop Down 4</a></li>
-                        <li><a href="#">Deep Drop Down 5</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Drop Down 2</a></li>
-                <li><a href="#">Drop Down 3</a></li>
-                <li><a href="#">Drop Down 4</a></li>
-            </ul>
-        </li>*@
+
+                        <li class="dropdown">
+                            <a class="nav-link text-white-50">More <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li><a class="nav-link scrollto" asp-action="AddEditAccident" asp-route-crashid="0">Add New Crash</a></li>
+                                }
+                                <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Score">Score a Crash</a></li>
+                                <li><a class="nav-link scollto" asp-controller="Home" asp-action="Survey">Take the Risk Survey</a></li>
+                                <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Privacy">Privacy Policy</a></li>
+                                <li><a class="nav-link scrollto" asp-controller="Home" asp-action="About">Development Team</a></li>
+
+                            </ul>
+                        </li>
+                   
+                    
+
+
 
 
                 </ul>
@@ -110,9 +113,8 @@
             </nav><!-- .navbar -->
 
         </div>
-        <partial name="_CookieConsentPartial" />
     </header><!-- End Header -->
-    <main role="main" class="pb-3">
+    <main role="main">
         @RenderBody()
     </main>
 
@@ -130,20 +132,20 @@
         @RenderSection("Scripts", required: false)
 
         @*<div class="footer-newsletter">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h4>Our Newsletter</h4>
-                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                    </div>
-                    <div class="col-lg-6">
-                        <form action="" method="post">
-                            <input type="email" name="email"><input type="submit" value="Subscribe">
-                        </form>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h4>Our Newsletter</h4>
+                            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <form action="" method="post">
+                                <input type="email" name="email"><input type="submit" value="Subscribe">
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>*@
+            </div>*@
 
         <div class="footer-top">
             <div class="container">
@@ -152,51 +154,59 @@
                     <div class="col-lg-3 col-md-6 footer-links">
                         <h4>Useful Links</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="About">About us</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#faq">Frequently Asked Questions</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Privacy"> Privacy Policy</a></li>
                         </ul>
+                        <h6>Connect with Utah DOT</h6>
+                        <div class="social-links mt-3">
+                            <a href="https://twitter.com/UtahDOT" class="twitter"><i class="bx bxl-twitter"></i></a>
+                            <a href="https://www.facebook.com/UtahDOT" class="facebook"><i class="bx bxl-facebook"></i></a>
+                            <a href="https://instagram.com/utahtransportation" class="instagram"><i class="bx bxl-instagram"></i></a>
+                        </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 footer-links">
+                    @*<div class="col-lg-3 col-md-6 footer-links">
                         <h4>Our Services</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Accidents">View Accidents</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Score">Score a Crash</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Survey">Risk Survey</a></li>
                         </ul>
-                    </div>
+                    </div>*@
 
                     <div class="col-lg-3 col-md-6 footer-contact">
                         <h4>Contact Us</h4>
                         <p>
                             A108 Adam Street <br>
-                            New York, NY 535022<br>
+                            Provo, UT 84604<br>
                             United States <br><br>
-                            <strong>Phone:</strong> +1 5589 55488 55<br>
-                            <strong>Email:</strong> info@example.com<br>
+                            <strong>Phone:</strong> +1 801-535-6630<br>
+                            <strong>Email:</strong> IS15.transplan@slcgov.com<br>
                         </p>
 
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-info">
-                        <h3>About Anyar</h3>
-                        <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
-                        <div class="social-links mt-3">
-                            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-                            @if (User.Identity.IsAuthenticated)
-            {
-                        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            } 
-                        </div>
+                        <h3>Group 1-5</h3>
+                        <p>
+                            Group Members: <br />
+                            Matthew Corbett <br />
+                            Spencer Harrison <br />
+                            Stetson Kent <br />
+                            Brennan Williams <br />
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-info">
+                        <h3>Our Mentors</h3>
+                        <p>
+                            Spencer Hilton - Master Yeeter<br />
+                            Taylor Wells - The Brewmaster<br />
+                            Mark Keith - DataMind<br />
+                            Ryan Schuetzler - Bot Maestro<br />
+                        </p>
                     </div>
 
                 </div>
@@ -206,7 +216,7 @@
 
     </footer><!-- End Footer -->
     <!-- Vendor JS Files -->
-     <script src="~/vendor/aos/aos.js"></script>
+    <script src="~/vendor/aos/aos.js"></script>
 
     <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/vendor/glightbox/js/glightbox.min.js"></script>
@@ -214,7 +224,7 @@
     <script src="~/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="~/vendor/php-email-form/validate.js"></script>
     <a href="https://www.flaticon.com/free-icons/accident" title="accident icons">Accident icons created by surang - Flaticon</a>
-    <!-- Template Main JS File 
+    <!-- Template Main JS File
     <script src="~/js/site.js"></script>
 
     -->
@@ -222,3 +232,10 @@
 
 
 </html>
+
+@section Scripts
+{
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/customerDatatable.js"></script>
+}

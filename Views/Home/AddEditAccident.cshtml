@@ -1,22 +1,17 @@
 ﻿@model Accident
 
-<section id="hero" class="d-flex justify-cntent-center align-items-center" style="height:10%;">
-    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
 
-        <!-- Slide 1 -->
-        <div class="carousel-item active">
-            <div class="carousel-container m-5">
-                <br />
-                <h2>Accident Information</h2>
-                <p class="animate__animated animate__fadeInUp">
-                Please fill out all Accident information.
-                </p>
-            </div>
-        </div>
-
-
+@*Header Section*@
+<section id="breadcrumbs" class="breadcrumbs ">
+    <div class="container d-flex justify-content-center">
+        <h2>Accident Information</h2>
     </div>
-</section><!-- End Hero -->
+    <div class="container d-flex justify-content-center">
+        <p class="animate__animated animate__fadeInUp">
+            Please fill out all Accident information.
+        </p>
+    </div>
+</section><!-- End Breadcrumbs -->
 
 <main id="main">
 
@@ -35,7 +30,7 @@
 
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="CRASH_DATETIME">Date and Time</label>
-                    <input type="text" asp-for="CRASH_DATETIME" class="form-control m-2" style="width:70%;" />
+                    <input type="datetime-local" asp-for="CRASH_DATETIME" class="form-control m-2" style="width:50%;" />
                 </div>
 
                 <div class="d-flex justify-content-between">
@@ -82,15 +77,15 @@
                 </div>
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="MILEPOINT">Milepoint</label>
-                    <input asp-for="MILEPOINT" class="form-control m-2" style="width: 50%; " />
+                    <input type="number" asp-for="MILEPOINT" class="form-control m-2" style="width: 50%; " />
                 </div>
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="LAT_UTM_Y">Latitude (UTM_Y Format)</label>
-                    <input asp-for="LAT_UTM_Y" class="form-control m-2" style="width: 50%; " />
+                    <input type="number" asp-for="LAT_UTM_Y" class="form-control m-2" style="width: 50%; " />
                 </div>
                 <div class="d-flex justify-content-between">
                     <label class="m-2 pt-2" asp-for="LONG_UTM_X">Longitude (UTM_Y Format)</label>
-                    <input asp-for="LONG_UTM_X" class="form-control m-2" style="width: 50%; " />
+                    <input type="number" asp-for="LONG_UTM_X" class="form-control m-2" style="width: 50%; " />
                 </div>
                 @*Booleans*@
                 <div class="d-flex justify-content-between">
@@ -194,7 +189,7 @@
 
             </form>
 
-            </div>
+        </div>
     </section> <!-- End Services Section -->
 
 

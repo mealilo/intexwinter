@@ -2,6 +2,7 @@ using intex2.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -13,6 +14,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.ML.OnnxRuntime;
+using Microsoft.ML.OnnxRuntime.Tensors;
 using Newtonsoft.Json.Converters;
 
 namespace intex2
@@ -80,8 +83,8 @@ namespace intex2
                 options.Password.RequireLowercase = true;
                 options.Password.RequireNonAlphanumeric = true;
                 options.Password.RequireUppercase = true;
-                options.Password.RequiredLength = 6;
-                options.Password.RequiredUniqueChars = 1;
+                options.Password.RequiredLength = 12;
+                options.Password.RequiredUniqueChars = 5;
 
                 // Lockout settings.
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
@@ -112,6 +115,12 @@ namespace intex2
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
                 options.SlidingExpiration = true;
             });
+
+            //Onnx
+            //crash severity indicator
+            services.AddSingleton<InferenceSession>(
+                new InferenceSession("Models/intexmodel (3).onnx")
+                );
         }
 
 
@@ -130,14 +139,17 @@ namespace intex2
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseHttpsRedirection();
             app.UseRouting();
+            // Enable cookies
             app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();
             app.Use(async (context, next) =>
             {
-                //context.Response.Headers.Add("Content-Security-Policy", "default-src 'self' cdn.jsdelivr.net cdn.datatables.net;");
+                // new security policy header (working)
+                context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; connect-src 'self'; style-src 'self' 'unsafe-inline'; style-src-elem * 'unsafe-inline'; script-src 'self' 'unsafe-inline' maps.googleapis.com; script-src-elem * 'unsafe-inline'; connect-src https://maps.googleapis.com/; frame-src 'self' https://public.tableau.com/; img-src 'self' https://*.googleapis.com https://www.youtube.com* h https://*.gstatic.com *.google.com  *.googleusercontent.com https://public.tableau.com/ data:");
+
                 await next();
             });
             app.UseEndpoints(endpoints =>
@@ -148,7 +160,7 @@ namespace intex2
 
                 endpoints.MapRazorPages();
             });
-        }
+        }                                                                             
     }
 
 }

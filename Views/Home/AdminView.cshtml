@@ -8,33 +8,26 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex justify-cntent-center align-items-center" style="height:10%;">
-    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
-
-        <!-- Slide 1 -->
-        <div class="carousel-item active">
-            <div class="carousel-container m-5">
-                <br />
-                <h2 >Currently Viewing all Accidents</h2>
-                <p class="animate__animated animate__fadeInUp">
-                    View, Edit, Delete, and Create All Accidents
-                    
-
-                </p>
-            </div>
-        </div>
 
 
+@*Header Section*@
+<section id="breadcrumbs" class="breadcrumbs ">
+    <div class="container d-flex justify-content-center">
+        <h2>Currently Viewing all Accidents</h2>
     </div>
-</section><!-- End Hero -->
+    <div class="container d-flex justify-content-center">
+        <p class="animate__animated animate__fadeInUp">
+            View, Edit, Delete, and Create All Accidents
+        </p>
+    </div>
+</section><!-- End Breadcrumbs -->
 
 <main id="main">
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
 
-        
+
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
@@ -47,6 +40,7 @@
             <table id="mytable" class="table  table-hover  table-sm table-striped">
                 <thead>
                     <tr class="text-center">
+                        <td>Severity Model</td>
                         <td>CRASH_ID</td>
                         <td>Manipulate</td>
                         <td>CRASH_DATETIME</td>
@@ -76,12 +70,18 @@
                     @foreach (Accident a in ViewBag.accidents)
                     {
                         <tr class="text-center">
+                            <td class="text-center">
+                                <a asp-action="Score" asp-route-crashid="@a.CRASH_ID" class="btn btn-primary text-center">Score</a>
+                            </td>
                             <td>@a.CRASH_ID</td>
-                            <td class="d-flex justify-content-center ">
-                                <a asp-action="AddEditAccident" asp-route-crashid="@a.CRASH_ID" class="btn btn-warning text-center m-1">Edit</a>
-                                <form>
-                                    <button type="submit" onclick="ConfirmDelete(@a.CRASH_ID);" class="btn btn-danger text-center m-1">Delete</button>
-                                </form>
+                            <td class="text-center">
+                                <div class="d-flex text-center">
+                                    <a asp-action="AddEditAccident" asp-route-crashid="@a.CRASH_ID" class="btn btn-warning text-center m-2">Edit</a>
+                                    <form>
+                                        <button type="submit" onclick="ConfirmDelete(@a.CRASH_ID);" class="btn btn-danger text-center m-2">Delete</button>
+                                    </form>
+                                </div>
+                               
                             </td>
 
                             <td>@a.CRASH_DATETIME</td>

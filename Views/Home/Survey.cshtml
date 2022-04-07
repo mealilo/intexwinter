@@ -1,0 +1,154 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CrashSeverityData
+
+
+
+<section id="breadcrumbs" class="breadcrumbs ">
+    <div class="container d-flex justify-content-center">
+        <h2>Are You At Risk?</h2>
+    </div>
+    <div class="container d-flex justify-content-center">
+        <p class="animate__animated animate__fadeInUp">
+            Fill out the form below to determine if you are at a higher risk of experiencing a severe crash.
+        </p>
+
+    </div>
+    <div class="container d-flex justify-content-center">
+        <h2>
+            @ViewBag.Message
+        </h2>
+    </div>
+</section><!-- End Breadcrumbs -->
+
+<main id="main">
+
+    <section id="services" class="services">
+        <div class="container" style="width:25%;" data-aos="fade-up">
+
+            <form method="post" asp-controller="Home" asp-action="Survey">
+
+                <div class="alert-danger" asp-validation-summary="All"></div>
+
+                @*Booleans*@
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <p class="m-1 ">Primary Form of Transportation</p>
+
+                    <div>
+                        <input type="radio" asp-for="pedestrian_involved" name="commute" value="1">
+                        <label asp-for="pedestrian_involved">Walk</label>
+                        <br />
+                        <input type="radio" asp-for="motorcycle_involved" name="commute" value="1">
+                        <label asp-for="motorcycle_involved">Motorcycle</label>
+                        <br />
+                        <input type="radio" name="commute" />
+                        <label>Car</label>
+                        <br />
+                        <input type="radio" name="commute" />
+                        <label>Bus</label>
+                    </div>
+
+                </div>
+
+                <br />
+
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="overturn_rollover">Have you ever totaled a vehicle?</label>
+                    <select asp-for="overturn_rollover">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+                <br />
+
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="intersection_related">Have you ever recieved a ticket?</label>
+                    <select asp-for="intersection_related">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+                <br />
+
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="older_driver_involved">How old are you?</label>
+                    <select asp-for="older_driver_involved">
+                        <option value="1">21 or Younger</option>
+                        <option value="0">21-65</option>
+                        <option value="1">65 or Older</option>
+                    </select>
+                </div>
+                <br />
+
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="night_dark_condition">Do you drive more at night or during the day?</label>
+                    <select asp-for="night_dark_condition">
+                        <option value="0">Day</option>
+                        <option value="1">Night</option>
+                    </select>
+                </div>
+                <br />
+
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="distracted_driving">Do you have children?</label>
+                    <select asp-for="distracted_driving">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+                <br />
+
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="distracted_driving">Do you ever text and drive?</label>
+                    <select asp-for="distracted_driving">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+                <br />
+
+                <div class="d-flex justify-content-between">
+                    <label class="m-2 pt-2" asp-for="distracted_driving">Do you every drive drowsy?</label>
+                    <select asp-for="distracted_driving">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+                <br />
+
+                <div class="d-flex justify-content-center">
+                    <input class="btn btn-primary" type="submit" value="Calculate Risk" />
+                </div>
+
+                @*<div class="d-flex justify-content-between">
+                    <input type="hidden" asp-for="route" value="10" class="form-control m-2" style="width: 50%; " />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <input type="hidden" asp-for="milepoint" value="10" class="form-control m-2" style="width: 50%; " />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <input type="hidden" asp-for="lat_utm_y" value="4500000" class="form-control m-2" style="width: 50%; " />
+                </div>
+                <div class="d-flex justify-content-between">
+                    <input type="hidden" asp-for="long_utm_x" value="450000" class="form-control m-2" style="width: 50%; " />
+                </div>*@
+
+            </form>
+
+        </div>
+    </section> <!-- End Services Section -->
+
+
+
+</main><!-- End #main -->
