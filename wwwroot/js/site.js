@@ -86,7 +86,7 @@ $(document).ready(function () {
 
   
     });
-
+    //onclick the different buttons for the delete score and edit
     $('#tester tbody').on('click', 'a', function () {
         var data = table.row($(this).parents('tr')).data();
         ConfirmDelete(data["crasH_ID"])
@@ -103,6 +103,69 @@ $(document).ready(function () {
     });
 });
 
+
+//general datatables
+$(document).ready(function () {
+
+    var table = $('#accident').DataTable({
+       
+        "serverSide": true,
+        "processing": true,
+        "searching": { regex: true },
+        // Ajax Filter
+        "ajax": {
+            url: "/Home/AjaxHandler",
+            type: "POST",
+            contentType: "application/json",
+            dataType: "json",
+            data: function (d) {
+                return JSON.stringify(d);
+            }
+        },
+        "columns": [
+         
+            { "data": "crasH_ID" },
+          
+            { "data": "crasH_DATETIME" },
+            { "data": "crasH_SEVERITY_ID" },
+            { "data": "route" },
+            { "data": "milepoint" },
+            { "data": "laT_UTM_Y" },
+            { "data": "lonG_UTM_X" },
+            { "data": "maiN_ROAD_NAME" },
+            { "data": "city" },
+            { "data": "countY_NAME" },
+            { "data": "pedestriaN_INVOLVED" },
+            { "data": "worK_ZONE_RELATED" },
+            { "data": "bicyclisT_INVOLVED" },
+            { "data": "motorcyclE_INVOLVED" },
+            { "data": "impropeR_RESTRAINT" },
+            { "data": "unrestrained" },
+            
+            { "data": "dui" },
+            { "data": "intersectioN_RELATED" },
+            { "data": "wilD_ANIMAL_RELATED" },
+            { "data": "domestiC_ANIMAL_RELATED" },
+            { "data": "overturN_ROLLOVER" },
+            { "data": "commerciaL_MOTOR_VEH_INVOLVED" },
+      
+            { "data": "distracteD_DRIVING" },
+            { "data": "drowsY_DRIVING" },
+            { "data": "nighT_DARK_CONDITION" },
+            { "data": "oldeR_DRIVER_INVOLVED" },
+            {"data" : "roadwaY_DEPARTURE"},          
+            { "data": "singlE_VEHICLE" },
+            { "data": "teenagE_DRIVER_INVOLVED" },
+                    
+                  
+            
+           
+        ],
+
+  
+    });
+    
+});
 function score(crashid) {
     window.location.href = "/Home/Score?crashid=" + crashid
 
