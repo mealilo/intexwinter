@@ -75,10 +75,13 @@
                             </td>
                             <td>@a.CRASH_ID</td>
                             <td class="text-center">
-                                <a asp-action="AddEditAccident" asp-route-crashid="@a.CRASH_ID" class="btn btn-warning text-center">Edit</a>
-                                <form>
-                                    <button type="submit" onclick="ConfirmDelete(@a.CRASH_ID);" class="btn btn-danger text-center">Delete</button>
-                                </form>
+                                <div class="d-flex text-center">
+                                    <a asp-action="AddEditAccident" asp-route-crashid="@a.CRASH_ID" class="btn btn-warning text-center m-2">Edit</a>
+                                    <form>
+                                        <button type="submit" onclick="ConfirmDelete(@a.CRASH_ID);" class="btn btn-danger text-center m-2">Delete</button>
+                                    </form>
+                                </div>
+                               
                             </td>
 
                             <td>@a.CRASH_DATETIME</td>
