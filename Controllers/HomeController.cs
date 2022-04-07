@@ -96,7 +96,7 @@ namespace intex2.Controllers
         public IActionResult AdminView()
         {
 
-            List<Accident> AllAccidents = repo.Accidents.Take(100).ToList();
+            List<Accident> AllAccidents = repo.Accidents.OrderByDescending(d => d.CRASH_DATETIME).Take(100).ToList();
             ViewBag.accidents = AllAccidents;
 
             return View();
