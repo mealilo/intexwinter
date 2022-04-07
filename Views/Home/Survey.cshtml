@@ -12,37 +12,29 @@
 
 @model CrashSeverityData
 
-<section id="hero" class="d-flex justify-cntent-center align-items-center" style="height:10%;">
-    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
 
-        <!-- Slide 1 -->
-        <div class="carousel-item active">
-            <div class="carousel-container m-5">
-                <br />
-                <h2>Are You At Risk?</h2>
-                <p class="animate__animated animate__fadeInUp">
-                    Fill out the form below to determine if you are at a higher risk of experiencing a severe crash.
-                </p>
 
-                <h2>
-                    @ViewBag.Message
-                </h2>
-            </div>
-        </div>
-
+<section id="breadcrumbs" class="breadcrumbs ">
+    <div class="container d-flex justify-content-center">
+        <h2>Are You At Risk?</h2>
+    </div>
+    <div class="container d-flex justify-content-center">
+        <p class="animate__animated animate__fadeInUp">
+            Fill out the form below to determine if you are at a higher risk of experiencing a severe crash.
+        </p>
 
     </div>
-</section><!-- End Hero -->
+    <div class="container d-flex justify-content-center">
+        <h2>
+            @ViewBag.Message
+        </h2>
+    </div>
+</section><!-- End Breadcrumbs -->
 
 <main id="main">
 
     <section id="services" class="services">
         <div class="container" style="width:25%;" data-aos="fade-up">
-
-            <div class="section-title">
-                <br />
-                <br />
-            </div>
 
             <form method="post" asp-controller="Home" asp-action="Survey">
 
@@ -66,7 +58,7 @@
                         <input type="radio" name="commute" />
                         <label>Bus</label>
                     </div>
-                    
+
                 </div>
 
                 <br />
