@@ -50,7 +50,7 @@
 <body>
 
     <!-- ======= Top Bar ======= -->
-    <div id="topbar" class="fixed-top d-flex align-items-center ">
+    <div id="topbar" class="fixed-top d-flex align-items-center topbar-inner-pages">
         <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
             <div class="contact-info d-flex align-items-center">
                 <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">info@example.com</a>
@@ -63,7 +63,7 @@
     </div>
 
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top d-flex align-items-center ">
+    <header id="header" class="fixed-top d-flex align-items-center header-inner-pages">
         <div class="container d-flex align-items-center justify-content-between">
 
             <h1 class="logo"><a href="index.html">Utah Department of Transportation</a></h1>
@@ -107,15 +107,15 @@
 
         </div>
     </header><!-- End Header -->
-    <main role="main" class="pb-3">
+    <main id="main">
 
 
         <!-- ======= Hero Section ======= -->
-        <section id="hero" class="d-flex justify-cntent-center align-items-center" style="height:10%;">
-            <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+        <!--<section id="hero" class="d-flex justify-cntent-center align-items-center" style="height:10%;">
+            <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">-->
 
                 <!-- Slide 1 -->
-                <div class="carousel-item active">
+                <!--<div class="carousel-item active">
                     <div class="carousel-container m-5">
                         <br />
                         <h2>@ViewData["Title"]</h2>
@@ -124,7 +124,15 @@
 
 
             </div>
-        </section><!-- End Hero -->
+        </section>--><!-- End Hero -->
+
+
+            <!-- ======= Breadcrumbs ======= -->
+            <section id="breadcrumbs" class="breadcrumbs ">
+                <div class="container d-flex justify-content-center">
+                    <h2>@ViewData["Title"]</h2>
+                </div>
+            </section><!-- End Breadcrumbs -->
 
         @RenderBody()
     </main>
@@ -242,3 +250,5 @@
     <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/js/customerDatatable.js"></script>
 }
+
+
