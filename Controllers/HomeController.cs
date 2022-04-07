@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace intex2.Controllers
@@ -275,6 +276,20 @@ namespace intex2.Controllers
         [HttpPost]
         public IActionResult Survey(CrashSeverityData survey)
         {
+            Random rd = new Random();
+
+            float rand_num = rd.Next(1, 1000000);
+            survey.route = rand_num;
+
+            rand_num = rd.Next(0, 500);
+            survey.milepoint = rand_num;
+
+            rand_num = rd.Next(4000000, 5000000);
+            survey.lat_utm_y = rand_num;
+
+            rand_num = rd.Next(200000, 700000);
+            survey.long_utm_x = rand_num;
+
             var result = _session.Run(new List<NamedOnnxValue>
             {
                 NamedOnnxValue.CreateFromTensor("float_input", survey.AsTensor())
