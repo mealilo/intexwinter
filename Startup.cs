@@ -110,6 +110,7 @@ namespace intex2
             });
 
             //Onnx
+            //crash severity indicator
             services.AddSingleton<InferenceSession>(
                 new InferenceSession("Models/intexmodel (3).onnx")
                 );
@@ -131,7 +132,7 @@ namespace intex2
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseHttpsRedirection();
             app.UseRouting();
             // Enable cookies
             app.UseCookiePolicy();
