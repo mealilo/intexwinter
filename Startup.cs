@@ -61,17 +61,8 @@ namespace intex2
 
 
             services.AddAuthorization(options =>
-                options.AddPolicy("TwoFactorEnabled",
-                x => x.RequireClaim("amr", "mfa")));
-
-            services.AddAuthentication()
-                .AddGoogle(options =>
-                {
-                    IConfigurationSection googleAuthNSection =
-                    Configuration.GetSection("Authentication:Google");
-                    options.ClientId = googleAuthNSection["ClientId"];
-                    options.ClientSecret = googleAuthNSection["ClientSecret"];
-                });
+        options.AddPolicy("TwoFactorEnabled",
+        x => x.RequireClaim("amr", "mfa")));
 
             //Repository
             services.AddScoped<IAccidents, EFAccidents>();
@@ -140,7 +131,7 @@ namespace intex2
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseHttpsRedirection();
             app.UseRouting();
             app.UseCookiePolicy();
             app.UseAuthentication();
