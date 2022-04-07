@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Converters;
 
 namespace intex2
 {
@@ -30,18 +31,24 @@ namespace intex2
         {
             services.AddControllersWithViews();
 
+            services.AddControllersWithViews()
+              .AddNewtonsoftJson(options =>
+              {
+                  options.SerializerSettings.Converters.Add(new StringEnumConverter());
+              });
+
             services.AddDbContext<AccidentContext>(options =>
             {
                 options.UseMySql(Configuration["ConnectionStrings:UdotDBConnection"]);
             });
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential 
-                // cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                // requires using Microsoft.AspNetCore.Http;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
+            //services.Configure<CookiePolicyOptions>(options =>
+            //{
+            //    // This lambda determines whether user consent for non-essential 
+            //    // cookies is needed for a given request.
+            //    options.CheckConsentNeeded = context => true;
+            //    // requires using Microsoft.AspNetCore.Http;
+            //    options.MinimumSameSitePolicy = SameSiteMode.None;
+            //});
 
             services.AddRazorPages();
         
@@ -130,7 +137,7 @@ namespace intex2
             app.UseAuthorization();
             app.Use(async (context, next) =>
             {
-                context.Response.Headers.Add("Content-Security-Policy", "default-src 'self' cdn.jsdelivr.net cdn.datatables.net;");
+                //context.Response.Headers.Add("Content-Security-Policy", "default-src 'self' cdn.jsdelivr.net cdn.datatables.net;");
                 await next();
             });
             app.UseEndpoints(endpoints =>

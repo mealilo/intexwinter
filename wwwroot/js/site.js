@@ -8,6 +8,88 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+$(document).ready(function () {
+
+    $('#tester').DataTable({
+       
+        "serverSide": true,
+        "processing": true,
+        "searching": { regex: true },
+        // Ajax Filter
+        "ajax": {
+            url: "/Home/AjaxHandler",
+            type: "POST",
+            contentType: "application/json",
+            dataType: "json",
+            data: function (d) {
+                return JSON.stringify(d);
+            }
+        },
+        "columns": [
+            { "data": "crasH_ID" },
+            { "data": "crasH_DATETIME" },
+            { "data": "crasH_SEVERITY_ID" },
+            { "data": "route" },
+            { "data": "milepoint" },
+            { "data": "laT_UTM_Y" },
+            { "data": "lonG_UTM_X" },
+            { "data": "maiN_ROAD_NAME" },
+            { "data": "city" },
+            { "data": "countY_NAME" },
+            { "data": "pedestriaN_INVOLVED" },
+            { "data": "worK_ZONE_RELATED" },
+            { "data": "bicyclisT_INVOLVED" },
+            { "data": "motorcyclE_INVOLVED" },
+            { "data": "impropeR_RESTRAINT" },
+            { "data": "unrestrained" },
+            
+            { "data": "dui" },
+            { "data": "intersectioN_RELATED" },
+            { "data": "wilD_ANIMAL_RELATED" },
+            { "data": "domestiC_ANIMAL_RELATED" },
+            { "data": "overturN_ROLLOVER" },
+            { "data": "commerciaL_MOTOR_VEH_INVOLVED" },
+      
+            { "data": "distracteD_DRIVING" },
+            { "data": "drowsY_DRIVING" },
+            { "data": "nighT_DARK_CONDITION" },
+            { "data": "oldeR_DRIVER_INVOLVED" },
+            {"data" : "roadwaY_DEPARTURE"},          
+            { "data": "singlE_VEHICLE" },
+            { "data": "teenagE_DRIVER_INVOLVED" },
+                    
+                  
+            
+           
+        ],
+
+    });
+
+    
+});
+
+//CRASH_ID</td >
+//CRASH_DATETIME</td >
+//ROUTE</td >
+//MILEPOINT</td >
+//LATITUDE</td >
+//LONGITUDE</td >
+//MAIN_ROAD_NAME</td >
+//CITY</td >
+//COUNTY_NAME</td >
+//PEDESTRIAN_INVOLVED</td >
+//WORK_ZONE_RELATED</td >
+//BICYCLIST_INVOLVED</td >
+//MOTORCYCLE_INVOLVED</td >
+//IMPROPER_RESTRAINT</td >
+//UNRESTRAINED</td >
+//CRASH_SEVERITY_ID</td >
+//DUI</td >
+//INTERSECTION_RELATED</td >
+//WILD_ANIMAL_RELATED</td >
+//DOMESTIC_ANIMAL_RELATED</td >
+//OVERTURN_ROLLOVER</td >
+//COMMERCIAL_MOTOR_VEH_INVOLVED
 
 //$(document).ready(function () {
 //    $('#mytable').DataTable({
