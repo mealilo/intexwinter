@@ -132,7 +132,7 @@ namespace intex2
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseHttpsRedirection();
             app.UseRouting();
             app.UseCookiePolicy();
             app.UseAuthentication();
