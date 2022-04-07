@@ -95,21 +95,21 @@ namespace intex2.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult Search(IFormCollection form)
-        {
+        //[HttpPost]
+        //public IActionResult Search(IFormCollection form)
+        //{
 
 
-            string date = form["date"];
+        //    string date = form["date"];
 
 
-            DateTime dateD = DateTime.Parse(date); 
+        //    DateTime dateD = DateTime.Parse(date); 
 
 
-            List<Accident> FilteredAccidents = repo.Accidents.Where(x => x.CRASH_DATETIME.Value.Date == dateD).ToList();
-            ViewBag.FilteredAccidents = FilteredAccidents;
-            return View();
-        }
+        //    List<Accident> FilteredAccidents = repo.Accidents.Where(x => x.CRASH_DATETIME.Value.Date == dateD).ToList();
+        //    ViewBag.FilteredAccidents = FilteredAccidents;
+        //    return View();
+        //}
         // This is the view with all the edit buttons and delete. Only for logged in and authorized users
         [Authorize]
         public IActionResult AdminView()
