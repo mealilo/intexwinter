@@ -32,14 +32,20 @@ $(document).ready(function () {
                 "data": null,
 
                /* "render": function (data, row) { return "<a href='#' class='btn btn-danger' onclick=ConfirmDelete('" + row.crasH_ID + "'); >Delete</a>"; },*/
-                //"className": "dt-center editor-edit",
+                "className": "dt-center editor-edit",
                 "defaultContent": '<button class="btn btn-warning text-center m-1">Edit</button>',
                 "orderable": false
             },
             {
                 "data": null,
                 "className": "dt-center editor-delete",
-                "defaultContent": '<button class="btn btn-danger">Danger</button>',
+                "defaultContent": '<a class="btn btn-danger">Delete</a>',
+                "orderable": false
+            },
+            {
+                "data": null,
+                "className": "dt-center editor-delete",
+                "defaultContent": '<i class="btn btn-primary">Score</i>',
                 "orderable": false
             },
             { "data": "crasH_DATETIME" },
@@ -81,58 +87,33 @@ $(document).ready(function () {
   
     });
 
-    $('#tester tbody').on('click', 'button', function () {
+    $('#tester tbody').on('click', 'a', function () {
         var data = table.row($(this).parents('tr')).data();
         ConfirmDelete(data["crasH_ID"])
     });
+
+    $('#tester tbody').on('click', 'button', function () {
+        var data = table.row($(this).parents('tr')).data();
+        edit(data["crasH_ID"])
+    });
+
+    $('#tester tbody').on('click', 'i', function () {
+        var data = table.row($(this).parents('tr')).data();
+        score(data["crasH_ID"])
+    });
 });
 
-//CRASH_ID</td >
-//CRASH_DATETIME</td >
-//ROUTE</td >
-//MILEPOINT</td >
-//LATITUDE</td >
-//LONGITUDE</td >
-//MAIN_ROAD_NAME</td >
-//CITY</td >
-//COUNTY_NAME</td >
-//PEDESTRIAN_INVOLVED</td >
-//WORK_ZONE_RELATED</td >
-//BICYCLIST_INVOLVED</td >
-//MOTORCYCLE_INVOLVED</td >
-//IMPROPER_RESTRAINT</td >
-//UNRESTRAINED</td >
-//CRASH_SEVERITY_ID</td >
-//DUI</td >
-//INTERSECTION_RELATED</td >
-//WILD_ANIMAL_RELATED</td >
-//DOMESTIC_ANIMAL_RELATED</td >
-//OVERTURN_ROLLOVER</td >
-//COMMERCIAL_MOTOR_VEH_INVOLVED
+function score(crashid) {
+    window.location.href = "/Home/Score?crashid=" + crashid
 
-//$(document).ready(function () {
-//    $('#mytable').DataTable({
-//        "retrieve": true,
-//        "scrollY": "450px",
-//        "scrollCollapse": true,
-//        "paging": true,
-//        "scrollX": true
-
-//    });
-
-
-//});
+}
 
 // Actually code we are using
 
 //This method confrims whether you want the accident to be deleted or not
 function ConfirmDelete(crashid) {
 
-
-
-  
-
-    if (confirm('Are you sure you want to save this thing into the database?')) {
+    if (confirm('Are you sure you want to delete this accident?')) {
         // Save it!
 
         //sends ajax request to delete if confrimed is true
@@ -149,6 +130,12 @@ function ConfirmDelete(crashid) {
         // Do nothing!
         alert("Delete Cancelled");
     }
+}
+
+function edit(crashid) {
+
+    window.location.href = "/Home/AddEditAccident?crashid=" + crashid
+
 }
 
 

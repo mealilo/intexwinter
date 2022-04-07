@@ -141,6 +141,8 @@ namespace intex2.Controllers
             }
 
         }
+
+   
         [Authorize]
         [HttpPost]
         public IActionResult AddEditAccident(Accident accident)
