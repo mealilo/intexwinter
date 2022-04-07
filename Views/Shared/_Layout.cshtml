@@ -73,6 +73,7 @@
             <nav id="navbar" class="navbar">
 
                 <ul>
+                    <li><a asp-controller="Home" asp-action="Search">Search</a></li>
                     <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Index">Home</a></li>
                     @if (!User.Identity.IsAuthenticated)
                     {

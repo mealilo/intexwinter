@@ -133,6 +133,7 @@ namespace intex2
             app.UseStaticFiles();
 
             app.UseRouting();
+            // Enable cookies
             app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();

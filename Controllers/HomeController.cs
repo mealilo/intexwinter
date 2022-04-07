@@ -1,5 +1,6 @@
 ﻿using intex2.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -64,6 +65,28 @@ namespace intex2.Controllers
         {
             List<Accident> AllAccidents = repo.Accidents.ToList();
             ViewBag.accidents = AllAccidents;
+            return View();
+        }
+
+        //search. This is our backup if we can't get datatables working
+
+        public IActionResult Search()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Search(IFormCollection form)
+        {
+
+
+            string date = form["date"];
+
+
+            DateTime dateD = DateTime.Parse(date); 
+
+
+            List<Accident> FilteredAccidents = repo.Accidents.Where(x => x.CRASH_DATETIME.Value.Date == dateD).ToList();
+            ViewBag.FilteredAccidents = FilteredAccidents;
             return View();
         }
         // This is the view with all the edit buttons and delete. Only for logged in and authorized users
