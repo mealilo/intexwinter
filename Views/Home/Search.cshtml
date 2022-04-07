@@ -1,0 +1,126 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex justify-cntent-center align-items-center" style="height:10%;">
+    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+            <div class="carousel-container m-5">
+                <br />
+                <h2>Search by </h2>
+                <p class="animate__animated animate__fadeInUp">
+                    View & Filter Accidents
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+        @*<div class="container" data-aos="fade-up">*@
+
+        <div class="section-title">
+            <br />
+            <br />
+        </div>
+        
+        <form asp-action="Search" method="post">
+            <label>Date</label>
+            <input type="date" name="date" />
+            <button type="submit">Submit</button>
+        </form>
+
+    @if (ViewBag.FilteredAccidents != null)
+    {
+        <table id="mytable" class="table  table-hover table-responsive table-sm table-striped">
+            <thead>
+                <tr>
+                    <td class="text-center">Severity Model</td>
+                    <td class="text-center">CRASH_ID</td>
+                    <td class="text-center">CRASH_DATETIME</td>
+                    <td class="text-center">ROUTE</td>
+                    <td class="text-center">MILEPOINT</td>
+                    <td class="text-center">LATITUDE</td>
+                    <td class="text-center">LONGITUDE</td>
+                    <td class="text-center">MAIN_ROAD_NAME</td>
+                    <td class="text-center">CITY</td>
+                    <td class="text-center">COUNTY_NAME</td>
+                    <td class="text-center">PEDESTRIAN_INVOLVED</td>
+                    <td class="text-center">WORK_ZONE_RELATED</td>
+                    <td class="text-center">BICYCLIST_INVOLVED</td>
+                    <td class="text-center">MOTORCYCLE_INVOLVED</td>
+                    <td class="text-center">IMPROPER_RESTRAINT</td>
+                    <td class="text-center">UNRESTRAINED</td>
+                    <td class="text-center">CRASH_SEVERITY_ID</td>
+                    <td class="text-center">DUI</td>
+                    <td class="text-center">INTERSECTION_RELATED</td>
+                    <td class="text-center">WILD_ANIMAL_RELATED</td>
+                    <td class="text-center">DOMESTIC_ANIMAL_RELATED</td>
+                    <td class="text-center">OVERTURN_ROLLOVER</td>
+                    <td class="text-center">COMMERCIAL_MOTOR_VEH_INVOLVED</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Accident a in ViewBag.FilteredAccidents)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <a asp-action="Score" asp-route-crashid="@a.CRASH_ID" class="btn btn-primary text-center">Score</a>
+
+                        </td>
+
+                        <td class="text-center">@a.CRASH_ID</td>
+                        <td class="text-center">@a.CRASH_DATETIME</td>
+                        <td class="text-center">@a.ROUTE</td>
+                        <td class="text-center">@a.MILEPOINT</td>
+                        <td class="text-center">@a.LAT_UTM_Y</td>
+                        <td class="text-center">@a.LONG_UTM_X</td>
+                        <td class="text-center">@a.MAIN_ROAD_NAME</td>
+                        <td class="text-center">@a.CITY</td>
+                        <td class="text-center">@a.COUNTY_NAME</td>
+                        <td class="text-center">@a.CRASH_SEVERITY_ID</td>
+                        <td class="text-center">@a.WORK_ZONE_RELATED</td>
+                        <td class="text-center">@a.PEDESTRIAN_INVOLVED</td>
+                        <td class="text-center">@a.BICYCLIST_INVOLVED</td>
+                        <td class="text-center">@a.MOTORCYCLE_INVOLVED</td>
+                        <td class="text-center">@a.IMPROPER_RESTRAINT</td>
+                        <td class="text-center">@a.UNRESTRAINED</td>
+                        <td class="text-center">@a.DUI</td>
+                        <td class="text-center">@a.INTERSECTION_RELATED</td>
+                        <td class="text-center">@a.WILD_ANIMAL_RELATED</td>
+                        <td class="text-center">@a.DOMESTIC_ANIMAL_RELATED</td>
+                        <td class="text-center">@a.OVERTURN_ROLLOVER</td>
+                        <td class="text-center">@a.COMMERCIAL_MOTOR_VEH_INVOLVED</td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    }
+    </section> <!-- End Services Section -->
+
+
+
+</main><!-- End #main -->

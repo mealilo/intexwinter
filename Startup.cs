@@ -134,14 +134,15 @@ namespace intex2
             app.UseStaticFiles();
             app.UseHttpsRedirection();
             app.UseRouting();
+            // Enable cookies
             app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();
             app.Use(async (context, next) =>
             {
+                // new security policy header (working)
+                context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; connect-src 'self'; style-src 'self' 'unsafe-inline'; style-src-elem * 'unsafe-inline'; script-src 'self' 'unsafe-inline' maps.googleapis.com; script-src-elem * 'unsafe-inline'; connect-src https://maps.googleapis.com/; frame-src 'self' https://public.tableau.com/; img-src 'self' https://*.googleapis.com https://www.youtube.com* h https://*.gstatic.com *.google.com  *.googleusercontent.com https://public.tableau.com/ data:");
 
-                //FIX ME
-               // context.Response.Headers.Add("Content-Security-Policy", "script-src 'unsafe-inline'; connect-src 'code.jquery.com'  cdn.jsdelivr.net cdn.datatables.net;");
                 await next();
             });
             app.UseEndpoints(endpoints =>

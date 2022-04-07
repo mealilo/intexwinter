@@ -27,51 +27,50 @@
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
         @*<div class="container" data-aos="fade-up">*@
-
-        <div class="section-title">
-            <br />
-            <br />
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-        <div class="row">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <table id="mytable" class="table  table-hover table-responsive table-sm table-striped">
-                    <thead>
-                        <tr>
-                            <td class="text-center">Severity Model</td>
-                            <td class="text-center">CRASH_ID</td>
-                            <td class="text-center">CRASH_DATETIME</td>
-                            <td class="text-center">ROUTE</td>
-                            <td class="text-center">MILEPOINT</td>
-                            <td class="text-center">LATITUDE</td>
-                            <td class="text-center">LONGITUDE</td>
-                            <td class="text-center">MAIN_ROAD_NAME</td>
-                            <td class="text-center">CITY</td>
-                            <td class="text-center">COUNTY_NAME</td>
-                            <td class="text-center">PEDESTRIAN_INVOLVED</td>
-                            <td class="text-center">WORK_ZONE_RELATED</td>
-                            <td class="text-center">BICYCLIST_INVOLVED</td>
-                            <td class="text-center">MOTORCYCLE_INVOLVED</td>
-                            <td class="text-center">IMPROPER_RESTRAINT</td>
-                            <td class="text-center">UNRESTRAINED</td>
-                            <td class="text-center">CRASH_SEVERITY_ID</td>
-                            <td class="text-center">DUI</td>
-                            <td class="text-center">INTERSECTION_RELATED</td>
-                            <td class="text-center">WILD_ANIMAL_RELATED</td>
-                            <td class="text-center">DOMESTIC_ANIMAL_RELATED</td>
-                            <td class="text-center">OVERTURN_ROLLOVER</td>
-                            <td class="text-center">COMMERCIAL_MOTOR_VEH_INVOLVED</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (Accident a in ViewBag.accidents)
-                        {
-                            <tr>
-                                <td class="text-center">
-                                    <a asp-action="Score" asp-route-crashid="@a.CRASH_ID" class="btn btn-primary text-center">Score</a>
-
-                                </td>
+            
+            <div class="section-title">
+                <br />
+                <br />
+            </div>
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <table id="mytable" class="table  table-hover table-responsive table-sm table-striped">
+    <thead>
+        <tr>
+            <td class="text-center">Severity Model</td>
+            <td class="text-center">CRASH_ID</td>
+            <td class="text-center">CRASH_DATETIME</td>
+            <td class="text-center">ROUTE</td>
+            <td class="text-center">MILEPOINT</td>
+            <td class="text-center">LATITUDE</td>
+            <td class="text-center">LONGITUDE</td>
+            <td class="text-center">MAIN_ROAD_NAME</td>
+            <td class="text-center">CITY</td>
+            <td class="text-center">COUNTY_NAME</td>
+            <td class="text-center">PEDESTRIAN_INVOLVED</td>
+            <td class="text-center">WORK_ZONE_RELATED</td>
+            <td class="text-center">BICYCLIST_INVOLVED</td>
+            <td class="text-center">MOTORCYCLE_INVOLVED</td>
+            <td class="text-center">IMPROPER_RESTRAINT</td>
+            <td class="text-center">UNRESTRAINED</td>
+            <td class="text-center">CRASH_SEVERITY_ID</td>
+            <td class="text-center">DUI</td>
+            <td class="text-center">INTERSECTION_RELATED</td>
+            <td class="text-center">WILD_ANIMAL_RELATED</td>
+            <td class="text-center">DOMESTIC_ANIMAL_RELATED</td>
+            <td class="text-center">OVERTURN_ROLLOVER</td>
+            <td class="text-center">COMMERCIAL_MOTOR_VEH_INVOLVED</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Accident a in ViewBag.accidents)
+        {
+        <tr>
+            <td class="text-center">
+                <a asp-action="Score" asp-route-crashid="@a.CRASH_ID" class="btn btn-primary text-center">Score</a>
+   
+            </td>
 
                                 <td class="text-center">@a.CRASH_ID</td>
                                 <td class="text-center">@a.CRASH_DATETIME</td>
