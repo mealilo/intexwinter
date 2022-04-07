@@ -110,6 +110,7 @@ namespace intex2
             });
 
             //Onnx
+            //crash severity indicator
             services.AddSingleton<InferenceSession>(
                 new InferenceSession("Models/intexmodel (3).onnx")
                 );
