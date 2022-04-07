@@ -10,7 +10,7 @@
 */
 $(document).ready(function () {
 
-    $('#tester').DataTable({
+    var table = $('#tester').DataTable({
        
         "serverSide": true,
         "processing": true,
@@ -26,7 +26,22 @@ $(document).ready(function () {
             }
         },
         "columns": [
+         
             { "data": "crasH_ID" },
+            {
+                "data": null,
+
+               /* "render": function (data, row) { return "<a href='#' class='btn btn-danger' onclick=ConfirmDelete('" + row.crasH_ID + "'); >Delete</a>"; },*/
+                //"className": "dt-center editor-edit",
+                "defaultContent": '<button class="btn btn-warning text-center m-1">Edit</button>',
+                "orderable": false
+            },
+            {
+                "data": null,
+                "className": "dt-center editor-delete",
+                "defaultContent": '<button class="btn btn-danger">Danger</button>',
+                "orderable": false
+            },
             { "data": "crasH_DATETIME" },
             { "data": "crasH_SEVERITY_ID" },
             { "data": "route" },
@@ -63,9 +78,13 @@ $(document).ready(function () {
            
         ],
 
+  
     });
 
-    
+    $('#tester tbody').on('click', 'button', function () {
+        var data = table.row($(this).parents('tr')).data();
+        ConfirmDelete(data["crasH_ID"])
+    });
 });
 
 //CRASH_ID</td >
