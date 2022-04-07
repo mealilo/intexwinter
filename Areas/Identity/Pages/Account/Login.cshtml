@@ -55,7 +55,6 @@
                                                 <label asp-for="Input.Password"></label>
                                                 <input id="myInput" asp-for="Input.Password" class="form-control" />
                                                 <span asp-validation-for="Input.Password" class="text-danger"></span>
-                                                <input type="checkbox" onclick="myFunction()">Show Password
                                             </div>
                                             <div class="form-group">
                                                 <div class="checkbox">
@@ -121,7 +120,7 @@
 
     </section> <!-- End Services Section -->
 
-    <script>
+    @*<script>
         function myFunction() {
             var x = document.getElementById("myInput");
             if (x.type === "password") {
@@ -130,6 +129,6 @@
                 x.type = "password";
             }
         }
-    </script>
+    </script>*@
 
 </main><!-- End #main -->
