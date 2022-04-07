@@ -144,7 +144,7 @@ namespace intex2
                 //context.Response.Headers.Add("Content-Security-Policy", "script-src 'unsafe-inline'; connect-src 'code.jquery.com'  cdn.jsdelivr.net cdn.datatables.net;");
 
                 // new security policy header (working)
-                context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline'; style-src-elem * 'unsafe-inline'; script-src 'self' maps.googleapis.com; script-src-elem * 'unsafe-inline'; connect-src https://maps.googleapis.com/; frame-src 'self' https://public.tableau.com/; img-src 'self' https://*.googleapis.com https://*.gstatic.com *.google.com  *.googleusercontent.com https://public.tableau.com/ data:");
+                context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline'; style-src-elem * 'unsafe-inline'; script-src 'self' maps.googleapis.com; script-src-elem * 'unsafe-inline'; connect-src https://maps.googleapis.com/; frame-src 'self' https://public.tableau.com/; img-src 'self' https://*.googleapis.com https://www.youtube.com* h https://*.gstatic.com *.google.com  *.googleusercontent.com https://public.tableau.com/ data:");
 
                 await next();
             });
