@@ -19,6 +19,8 @@ namespace intex2.Controllers
 
         //creates repo for the DB
         private IAccidents repo { get; set; }
+
+        //Creates session for onnx file to be called
         private InferenceSession _session;
 
 
@@ -129,7 +131,7 @@ namespace intex2.Controllers
             return RedirectToAction("AdminView");
         }
 
-        //Onnx
+        //Onnx Crash Severity Score
         [HttpGet]
         public IActionResult Score(int? crashid)
         {
@@ -236,10 +238,29 @@ namespace intex2.Controllers
             var prediction = new Prediction { PredictedValue = score.First() };
             result.Dispose();
 
-
-
             ViewBag.Message = "Predicted Score: " + Math.Round(prediction.PredictedValue,0);
             return View(data);
+        }
+
+        //Onnx Survey Prediction
+        [HttpGet]
+        public IActionResult Survey()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Survey(CrashSeverityData survey)
+        {
+            var result = _session.Run(new List<NamedOnnxValue>
+            {
+                NamedOnnxValue.CreateFromTensor("float_input", survey.AsTensor())
+            });
+            Tensor<float> surveyscore = result.First().AsTensor<float>();
+            var surveyprediction = new Prediction { PredictedValue = surveyscore.First() };
+            result.Dispose();
+            ViewBag.Message = "Predicted Score: " + Math.Round(surveyprediction.PredictedValue, 0);
+            return View(survey);
         }
 
         public IActionResult Privacy()
