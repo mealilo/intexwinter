@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\intexmodel%283%29.onnx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="LG.Microsoft.ML.OnnxTransformer" Version="1.6.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.23" />
     <PackageReference Include="DataTables.Queryable.Core" Version="1.6.2" />

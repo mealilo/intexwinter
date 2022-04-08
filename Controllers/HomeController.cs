@@ -126,8 +126,9 @@ namespace intex2.Controllers
         public IActionResult AddEditAccident(int crashid)
         {
 
-            ViewBag.Cities = repo.Accidents.Select(x => x.CITY).Distinct().ToList();
-            ViewBag.Counties = repo.Accidents.Select(x => x.COUNTY_NAME).Distinct().ToList();
+            ViewBag.Cities = repo.Accidents.OrderBy(x => x.CITY).Select(x => x.CITY).Distinct().ToList();
+
+            ViewBag.Counties = repo.Accidents.OrderBy(x => x.COUNTY_NAME).Select(x => x.COUNTY_NAME).Distinct().ToList();
             // if new bowler
             if (crashid == 0)
             {
@@ -147,8 +148,10 @@ namespace intex2.Controllers
         [HttpPost]
         public IActionResult AddEditAccident(Accident accident)
         {
+        
+            var city = repo.Accidents.OrderBy(x => x.CITY).Select(x => x.CITY).Distinct().ToList();
 
-            ViewBag.Cities = repo.Accidents.Select(x => x.CITY).Distinct().ToList();
+
             ViewBag.Counties = repo.Accidents.Select(x => x.COUNTY_NAME).Distinct().ToList();
 
             // if we are having issues with models and the db check here cause i removed the model check
