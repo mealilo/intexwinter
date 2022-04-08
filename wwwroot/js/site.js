@@ -33,13 +33,13 @@ $(document).ready(function () {
 
                /* "render": function (data, row) { return "<a href='#' class='btn btn-danger' onclick=ConfirmDelete('" + row.crasH_ID + "'); >Delete</a>"; },*/
                 "className": "dt-center editor-edit",
-                "defaultContent": '<button class="btn btn-warning text-center m-1">Edit</button>',
+                "defaultContent": '<button class="btn btn-warning text-center">Edit</button>',
                 "orderable": false
             },
             {
                 "data": null,
                 "className": "dt-center editor-delete",
-                "defaultContent": '<a class="btn btn-danger">Delete</a>',
+                "defaultContent": '<a class="btn btn-danger pt-2">Delete</a>',
                 "orderable": false
             },
             {
