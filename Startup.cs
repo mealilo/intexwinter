@@ -116,6 +116,7 @@ namespace intex2
                 options.SlidingExpiration = true;
             });
 
+
             //Onnx
             //crash severity indicator
             services.AddSingleton<InferenceSession>(
@@ -138,6 +139,8 @@ namespace intex2
                 app.UseHsts();
             }
             app.UseStaticFiles();
+            //app.UseHttpsRedirection();
+
             app.UseRouting();
             // Enable cookies
             app.UseCookiePolicy();
