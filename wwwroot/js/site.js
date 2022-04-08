@@ -10,7 +10,7 @@
 */
 $(document).ready(function () {
 
-    var table = $('#tester').DataTable({
+    var table = $('#admin').DataTable({
        
         "serverSide": true,
         "processing": true,
@@ -87,17 +87,17 @@ $(document).ready(function () {
   
     });
     //onclick the different buttons for the delete score and edit
-    $('#tester tbody').on('click', 'a', function () {
+    $('#admin tbody').on('click', 'a', function () {
         var data = table.row($(this).parents('tr')).data();
         ConfirmDelete(data["crasH_ID"])
     });
 
-    $('#tester tbody').on('click', 'button', function () {
+    $('#admin tbody').on('click', 'button', function () {
         var data = table.row($(this).parents('tr')).data();
         edit(data["crasH_ID"])
     });
 
-    $('#tester tbody').on('click', 'i', function () {
+    $('#admin tbody').on('click', 'i', function () {
         var data = table.row($(this).parents('tr')).data();
         score(data["crasH_ID"])
     });
@@ -123,8 +123,14 @@ $(document).ready(function () {
             }
         },
         "columns": [
-         
             { "data": "crasH_ID" },
+            {
+                "data": null,
+                "className": "dt-center editor-delete",
+                "defaultContent": '<button class="btn btn-primary">Score</button>',
+                "orderable": false
+            },
+           
           
             { "data": "crasH_DATETIME" },
             { "data": "crasH_SEVERITY_ID" },
@@ -164,7 +170,10 @@ $(document).ready(function () {
 
   
     });
-    
+    $('#accident tbody').on('click', 'button', function () {
+        var data = table.row($(this).parents('tr')).data();
+        score(data["crasH_ID"])
+    });
 });
 function score(crashid) {
     window.location.href = "/Home/Score?crashid=" + crashid
