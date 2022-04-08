@@ -2,10 +2,6 @@
     ViewData["Title"] = "Home Page";
 }
 
-    <div style="position: fixed ; bottom: 0px; right: 0px; z-index:100">
-        <partial name="_CookieConsentPartial" />
-    </div>
-
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex justify-cntent-center align-items-center">
 
@@ -247,6 +243,10 @@
                         <div class="text-center"><button type="submit">Send Message</button></div>
                     </form>
 
+                </div>
+
+                <div style="position: fixed ; bottom: 0px; right: 0px; z-index:1000">
+                    <partial name="_CookieConsentPartial" />
                 </div>
 
             </div>
