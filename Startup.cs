@@ -139,7 +139,7 @@ namespace intex2
                 app.UseHsts();
             }
             app.UseStaticFiles();
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
             // Enable cookies
