@@ -16,6 +16,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
+using Newtonsoft.Json.Converters;
 
 namespace intex2
 {
@@ -33,18 +34,24 @@ namespace intex2
         {
             services.AddControllersWithViews();
 
+            services.AddControllersWithViews()
+              .AddNewtonsoftJson(options =>
+              {
+                  options.SerializerSettings.Converters.Add(new StringEnumConverter());
+              });
+
             services.AddDbContext<AccidentContext>(options =>
             {
                 options.UseMySql(Configuration["ConnectionStrings:UdotDBConnection"]);
             });
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential 
-                // cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                // requires using Microsoft.AspNetCore.Http;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
+            //services.Configure<CookiePolicyOptions>(options =>
+            //{
+            //    // This lambda determines whether user consent for non-essential 
+            //    // cookies is needed for a given request.
+            //    options.CheckConsentNeeded = context => true;
+            //    // requires using Microsoft.AspNetCore.Http;
+            //    options.MinimumSameSitePolicy = SameSiteMode.None;
+            //});
 
             services.AddRazorPages();
         
@@ -139,13 +146,13 @@ namespace intex2
             app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();
-            app.Use(async (context, next) =>
-            {
-                // new security policy header (working)
-                context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; connect-src 'self'; style-src 'self' 'unsafe-inline'; style-src-elem * 'unsafe-inline'; script-src 'self' 'unsafe-inline' maps.googleapis.com; script-src-elem * 'unsafe-inline'; connect-src https://maps.googleapis.com/; frame-src 'self' https://public.tableau.com/; img-src 'self' https://*.googleapis.com https://www.youtube.com* h https://*.gstatic.com *.google.com  *.googleusercontent.com https://public.tableau.com/ data:");
+            //app.Use(async (context, next) =>
+            //{
+            //    // new security policy header (working)
+            //    context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; connect-src 'self'; style-src 'self' 'unsafe-inline'; style-src-elem * 'unsafe-inline'; script-src 'self' 'unsafe-inline' maps.googleapis.com; script-src-elem * 'unsafe-inline'; connect-src https://maps.googleapis.com/; frame-src 'self' https://public.tableau.com/; img-src 'self' https://*.googleapis.com https://www.youtube.com* h https://*.gstatic.com *.google.com  *.googleusercontent.com https://public.tableau.com/ data:");
 
-                await next();
-            });
+            //    await next();
+            //});
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

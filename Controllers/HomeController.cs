@@ -11,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace intex2.Controllers
@@ -73,31 +72,31 @@ namespace intex2.Controllers
 
         //search. This is our backup if we can't get datatables working
 
-        public IActionResult Search()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Search(IFormCollection form)
-        {
+        //public IActionResult Search()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //public IActionResult Search(IFormCollection form)
+        //{
 
 
-            string date = form["date"];
+        //    string date = form["date"];
 
 
-            DateTime dateD = DateTime.Parse(date); 
+        //    DateTime dateD = DateTime.Parse(date); 
 
 
-            List<Accident> FilteredAccidents = repo.Accidents.Where(x => x.CRASH_DATETIME.Value.Date == dateD).ToList();
-            ViewBag.FilteredAccidents = FilteredAccidents;
-            return View();
-        }
+        //    List<Accident> FilteredAccidents = repo.Accidents.Where(x => x.CRASH_DATETIME.Value.Date == dateD).ToList();
+        //    ViewBag.FilteredAccidents = FilteredAccidents;
+        //    return View();
+        //}
         // This is the view with all the edit buttons and delete. Only for logged in and authorized users
         [Authorize]
         public IActionResult AdminView()
         {
 
-            List<Accident> AllAccidents = repo.Accidents.OrderByDescending(d => d.CRASH_DATETIME).Take(100).ToList();
+            List<Accident> AllAccidents = repo.Accidents.Take(100).ToList();
             ViewBag.accidents = AllAccidents;
 
             return View();
@@ -276,20 +275,6 @@ namespace intex2.Controllers
         [HttpPost]
         public IActionResult Survey(CrashSeverityData survey)
         {
-            Random rd = new Random();
-
-            float rand_num = rd.Next(1, 1000000);
-            survey.route = rand_num;
-
-            rand_num = rd.Next(0, 500);
-            survey.milepoint = rand_num;
-
-            rand_num = rd.Next(4000000, 5000000);
-            survey.lat_utm_y = rand_num;
-
-            rand_num = rd.Next(200000, 700000);
-            survey.long_utm_x = rand_num;
-
             var result = _session.Run(new List<NamedOnnxValue>
             {
                 NamedOnnxValue.CreateFromTensor("float_input", survey.AsTensor())
