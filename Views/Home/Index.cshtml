@@ -2,260 +2,257 @@
     ViewData["Title"] = "Home Page";
 }
 
- <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex justify-cntent-center align-items-center">
+    <div style="position: fixed; bottom: 0px; right: 0px;">
+        <partial name="_CookieConsentPartial" />
+    </div>
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex justify-cntent-center align-items-center">
+
     <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
 
-      <!-- Slide 1 -->
-      <div class="carousel-item active">
-        <div class="carousel-container">
-          <h2 class="animate__animated animate__fadeInDown">Welcome to the Utah Department of Transportation</h2>
-          <p class="animate__animated animate__fadeInUp">Our purpose is to provide information to policy makers regarding automobile accidents.</p>
-          <a href="https://www.udot.utah.gov/connect/projects/" target="_blank" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+            <div class="carousel-container">
+                <h2 class="animate__animated animate__fadeInDown">Welcome to the Utah Department of Transportation</h2>
+                <p class="animate__animated animate__fadeInUp">Our purpose is to provide information to policy makers regarding automobile accidents.</p>
+                <a href="https://www.udot.utah.gov/connect/projects/" target="_blank" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+            </div>
         </div>
-      </div>
 
 
 
         @*We can figure this out later. I thin it has something to do with the aos javascript file*@
-      <!-- Slide 2 -->
-      <!--<div class="carousel-item">
-        <div class="carousel-container">
-          <h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
-          <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-          <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+        <!-- Slide 2 -->
+        <!--<div class="carousel-item">
+          <div class="carousel-container">
+            <h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
+            <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+          </div>
+        </div>-->
+        <!-- Slide 3 -->
+        <!--<div class="carousel-item">
+          <div class="carousel-container">
+            <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
+            <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+          </div>
         </div>
-      </div>-->
 
-      <!-- Slide 3 -->
-      <!--<div class="carousel-item">
-        <div class="carousel-container">
-          <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
-          <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-          <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-        </div>
-      </div>
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+        </a>
 
-      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
-      </a>
-
-      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-        <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
-      </a>-->
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+        </a>-->
 
     </div>
-  </section><!-- End Hero -->
+</section><!-- End Hero -->
 
-  <main id="main">
+<main id="main">
 
     <!-- ======= Icon Boxes Section ======= -->
     <section id="icon-boxes" class="icon-boxes">
-      <div class="container">
+        <div class="container">
 
-        <div class="row">
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up">
-              <div class="icon-box">
-                  <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                  <h4 class="title"><a asp-controller="Home" asp-action="Survey">Risk Identifier</a></h4>
-                  <p class="description">Based on your lifestyle, a survey has been created that determines your personal risk
-                  of getting in a severe accident. This survey will help you know what things you must change to decrease your risk.</p>
-              </div>
-          </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bx bxl-dribbble"></i></div>
+                        <h4 class="title"><a asp-controller="Home" asp-action="Survey">Risk Identifier</a></h4>
+                        <p class="description">
+                            Based on your lifestyle, a survey has been created that determines your personal risk
+                            of getting in a severe accident. This survey will help you know what things you must change to decrease your risk.
+                        </p>
+                    </div>
+                </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon-box">
-                  <div class="icon"><i class="bx bx-file"></i></div>
-                  <h4 class="title"><a asp-controller="Home" asp-action="Accidents">View Accident Database</a></h4>
-                  <p class="description">View a comprehensive dataset collected over the last 8 years.</p>
-              </div>
-          </div>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bx bx-file"></i></div>
+                        <h4 class="title"><a asp-controller="Home" asp-action="Accidents">View Accident Database</a></h4>
+                        <p class="description">View a comprehensive dataset collected over the last 8 years.</p>
+                    </div>
+                </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
-              <div class="icon-box">
-                  <div class="icon"><i class="bx bx-tachometer"></i></div>
-                  <h4 class="title"><a asp-controller="Home" asp-action="Score">Predict a Crash</a></h4>
-                  <p class="description"> Using state of the art algorhtihms combined with datasets numbering in the 100's of thousands, predict the intensity of a crash.</p>
-              </div>
-          </div>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bx bx-tachometer"></i></div>
+                        <h4 class="title"><a asp-controller="Home" asp-action="Score">Predict a Crash</a></h4>
+                        <p class="description"> Using state of the art algorhtihms combined with datasets numbering in the 100's of thousands, predict the intensity of a crash.</p>
+                    </div>
+                </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="300">
-              <div class="icon-box">
-                  <div class="icon"><i class="bx bx-layer"></i></div>
-                  <h4 class="title"><a asp-controller="Home" asp-action="Privacy">Privacy Policy</a></h4>
-                  <p class="description">Learn more about how UDOT collects, stores, and processes your data.</p>
-              </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Icon Boxes Section -->
-
-    <!-- ======= About Us Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>About Us</h2>
-        </div>
-
-        <div class="row content">
-          <div class="col-lg-6">
-            <p>
-              The Utah Department of Transportation (UDOT) has created this website to address the following goals:
-            </p>
-            <ul>
-              <li><i class="ri-check-double-line"></i>Create a central location for all users to view accidents</li>
-              <li><i class="ri-check-double-line"></i> Facilitate change in preservering lives on Utah Roads</li>
-              <li><i class="ri-check-double-line"></i> Become a resource for Utah Legislative policymakers to make informed decisions</li>
-            </ul>
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0">
-              <p>
-                  By acheiving these goals, we believe UDOT can play a critical role in helping everyday Utahns drive safer, recognize what is contributing to crashes,
-                  and to save lives.
-              </p>
-              <img src="~/img/logo-footer__large.png" />
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Us Section -->
-
-
-    <!-- ======= Cta Section ======= -->
-    <section id="cta" class="cta">
-      <div class="container">
-
-        <div class="row" data-aos="zoom-in">
-          <div class="col-lg-9 text-center text-lg-start">
-            <h3>Am I at Risk?</h3>
-              <p>Am I doing what I can do make sure I don't get in a severe car crash? Can I be doing better? Am I likely to get in a severe car crash? Answer these questions thourgh our machine learning survey!</p>
-          </div>
-          <div class="col-lg-3 cta-btn-container text-center">
-            <a class="cta-btn align-middle" asp-controller="Home" asp-action="Survey">Take the quiz</a>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Cta Section -->
-    
-
-
-    <!-- ======= Frequently Asked Questions Section ======= -->
-    <section id="faq" class="faq section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Frequently Asked Questions</h2>
-        </div>
-
-        <div class="faq-list">
-          <ul>
-            <li data-aos="fade-up"  data-aos-delay="100">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">What is this website for? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-                <p>
-                    This website's purpose is to provide information and act as an information superhighway regarding accidents in utah.
-                </p>
-              </div>
-            </li>
-
-            <li data-aos="fade-up" data-aos-delay="200">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">What should I do if I get in an accident?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                    <ol>
-                        <li>Make sure everyone is safe</li>
-                        <li>Call 911</li>
-                        <li>Exchange insurance information</li>
-                        
-                    </ol>
-                </p>
-              </div>
-            </li>
-
-            <li data-aos="fade-up" data-aos-delay="300">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">What are the functions of this website?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                    With this website, you can view all crahses that have occured in Utah since 2016, predict any type of crash, and take a survey which reveals your risk of a severe car crash.
-                </p>
-              </div>
-            </li>
-
-          </ul>
-        </div>
-
-      </div>
-    </section><!-- End Frequently Asked Questions Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Contact Us</h2>
-        </div>
-
-        <div class="row mt-1 d-flex justify-content-end" data-aos="fade-right" data-aos-delay="100">
-
-          <div class="col-lg-5">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>A108 Adam Street, Provo, UT 84604</p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>IS15.transplan@slcgov.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>+1 801-535-6630</p>
-              </div>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bx bx-layer"></i></div>
+                        <h4 class="title"><a asp-controller="Home" asp-action="Privacy">Privacy Policy</a></h4>
+                        <p class="description">Learn more about how UDOT collects, stores, and processes your data.</p>
+                    </div>
+                </div>
 
             </div>
 
-          </div>
+        </div>
+    </section><!-- End Icon Boxes Section -->
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
 
-          <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="100">
+            <div class="section-title">
+                <h2>About Us</h2>
+            </div>
 
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+            <div class="row content">
+                <div class="col-lg-6">
+                    <p>
+                        The Utah Department of Transportation (UDOT) has created this website to address the following goals:
+                    </p>
+                    <ul>
+                        <li><i class="ri-check-double-line"></i>Create a central location for all users to view accidents</li>
+                        <li><i class="ri-check-double-line"></i> Facilitate change in preservering lives on Utah Roads</li>
+                        <li><i class="ri-check-double-line"></i> Become a resource for Utah Legislative policymakers to make informed decisions</li>
+                    </ul>
                 </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                <div class="col-lg-6 pt-4 pt-lg-0">
+                    <p>
+                        By acheiving these goals, we believe UDOT can play a critical role in helping everyday Utahns drive safer, recognize what is contributing to crashes,
+                        and to save lives.
+                    </p>
+                    <img src="~/img/logo-footer__large.png" />
                 </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-
-          </div>
+            </div>
 
         </div>
+    </section><!-- End About Us Section -->
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+        <div class="container">
 
-      </div>
+            <div class="row" data-aos="zoom-in">
+                <div class="col-lg-9 text-center text-lg-start">
+                    <h3>Am I at Risk?</h3>
+                    <p>Am I doing what I can do make sure I don't get in a severe car crash? Can I be doing better? Am I likely to get in a severe car crash? Answer these questions thourgh our machine learning survey!</p>
+                </div>
+                <div class="col-lg-3 cta-btn-container text-center">
+                    <a class="cta-btn align-middle" asp-controller="Home" asp-action="Survey">Take the quiz</a>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Cta Section -->
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+
+            <div class="faq-list">
+                <ul>
+                    <li data-aos="fade-up" data-aos-delay="100">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">What is this website for? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                            <p>
+                                This website's purpose is to provide information and act as an information superhighway regarding accidents in utah.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li data-aos="fade-up" data-aos-delay="200">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">What should I do if I get in an accident?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+                            <p>
+                                <ol>
+                                    <li>Make sure everyone is safe</li>
+                                    <li>Call 911</li>
+                                    <li>Exchange insurance information</li>
+
+                                </ol>
+                            </p>
+                        </div>
+                    </li>
+
+                    <li data-aos="fade-up" data-aos-delay="300">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">What are the functions of this website?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+                            <p>
+                                With this website, you can view all crahses that have occured in Utah since 2016, predict any type of crash, and take a survey which reveals your risk of a severe car crash.
+                            </p>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </section><!-- End Frequently Asked Questions Section -->
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+
+            <div class="row mt-1 d-flex justify-content-end" data-aos="fade-right" data-aos-delay="100">
+
+                <div class="col-lg-5">
+                    <div class="info">
+                        <div class="address">
+                            <i class="bi bi-geo-alt"></i>
+                            <h4>Location:</h4>
+                            <p>A108 Adam Street, Provo, UT 84604</p>
+                        </div>
+
+                        <div class="email">
+                            <i class="bi bi-envelope"></i>
+                            <h4>Email:</h4>
+                            <p>IS15.transplan@slcgov.com</p>
+                        </div>
+
+                        <div class="phone">
+                            <i class="bi bi-phone"></i>
+                            <h4>Call:</h4>
+                            <p>+1 801-535-6630</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="100">
+
+                    <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6 form-group mt-3 mt-md-0">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group mt-3">
+                            <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                        </div>
+                        <div class="my-3">
+                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                        </div>
+                        <div class="text-center"><button type="submit">Send Message</button></div>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
     </section><!-- End Contact Section -->
 
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
- 
+</main><!-- End #main -->
+<!-- ======= Footer ======= -->
